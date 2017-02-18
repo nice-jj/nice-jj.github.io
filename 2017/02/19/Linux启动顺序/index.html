@@ -7,16 +7,16 @@
 
     
 
-    <title>yd</title>
+    <title>Linux启动顺序 | yd</title>
     <meta name="author" content="yd">
     
-    <meta name="description" content="Linux启动顺序一、系统启动初始化init阶段1. Grub加载内核之后，第一个运行的程序是 /sbin/initinit是SysVinit的一个实体进程，是系统所有进程的顶级父进程，PID是1  
-2. /sbin/init 读取 /etc/inittab文件，确定运行级别etc/inittab">
+    <meta name="description" content="一、系统启动初始化init阶段1. Grub加载内核之后，第一个运行的程序是 /sbin/initinit是SysVinit的一个实体进程，是系统所有进程的顶级父进程，PID是1  
+2. /sbin/init 读取 /etc/inittab文件，确定运行级别etc/inittab文件的信息会包含以">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="Linux启动顺序"/>
     <meta property="og:site_name" content="yd Blog"/>
 
     
@@ -198,7 +198,7 @@
             <div class="article-title">
                 
     
-        <h1>无题</h1>
+        <h1>Linux启动顺序</h1>
     
 
 
@@ -213,12 +213,12 @@
             
 
             <div class="toc pink-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#Linux启动顺序"><span class="section table-of-contents-text">Linux启动顺序</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一、系统启动初始化init阶段"><span class="section table-of-contents-text">一、系统启动初始化init阶段</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-Grub加载内核之后，第一个运行的程序是-sbin-init"><span class="section table-of-contents-text">1. Grub加载内核之后，第一个运行的程序是 /sbin/init</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2-sbin-init-读取-etc-inittab文件，确定运行级别"><span class="section table-of-contents-text">2. /sbin/init 读取 /etc/inittab文件，确定运行级别</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二、用户登录阶段"><span class="section table-of-contents-text">二、用户登录阶段</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#7-用户登录后先执行-etc-profile"><span class="section table-of-contents-text">7. 用户登录后先执行 /etc/profile</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#8-执行-bash-profile"><span class="section table-of-contents-text">8. 执行 ~/.bash_profile</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#9-执行-bashrc"><span class="section table-of-contents-text">9. 执行 ~/.bashrc</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#10-执行-etc-bashrc"><span class="section table-of-contents-text">10. 执行 /etc/bashrc</span></a></li></ol></li></ol></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一、系统启动初始化init阶段"><span class="section table-of-contents-text">一、系统启动初始化init阶段</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-Grub加载内核之后，第一个运行的程序是-sbin-init"><span class="section table-of-contents-text">1. Grub加载内核之后，第一个运行的程序是 /sbin/init</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2-sbin-init-读取-etc-inittab文件，确定运行级别"><span class="section table-of-contents-text">2. /sbin/init 读取 /etc/inittab文件，确定运行级别</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二、用户登录阶段"><span class="section table-of-contents-text">二、用户登录阶段</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#7-用户登录后先执行-etc-profile"><span class="section table-of-contents-text">7. 用户登录后先执行 /etc/profile</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#8-执行-bash-profile"><span class="section table-of-contents-text">8. 执行 ~/.bash_profile</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#9-执行-bashrc"><span class="section table-of-contents-text">9. 执行 ~/.bashrc</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#10-执行-etc-bashrc"><span class="section table-of-contents-text">10. 执行 /etc/bashrc</span></a></li></ol></li></ol>
 </div>
 
 
             <div class="entry pink-link-context">
-                <h1 id="Linux启动顺序"><a href="#Linux启动顺序" class="headerlink" title="Linux启动顺序"></a>Linux启动顺序</h1><h2 id="一、系统启动初始化init阶段"><a href="#一、系统启动初始化init阶段" class="headerlink" title="一、系统启动初始化init阶段"></a>一、系统启动初始化init阶段</h2><h3 id="1-Grub加载内核之后，第一个运行的程序是-sbin-init"><a href="#1-Grub加载内核之后，第一个运行的程序是-sbin-init" class="headerlink" title="1. Grub加载内核之后，第一个运行的程序是 /sbin/init"></a>1. Grub加载内核之后，第一个运行的程序是 /sbin/init</h3><p>init是SysVinit的一个实体进程，是系统所有进程的顶级父进程，PID是1  </p>
+                <h2 id="一、系统启动初始化init阶段"><a href="#一、系统启动初始化init阶段" class="headerlink" title="一、系统启动初始化init阶段"></a>一、系统启动初始化init阶段</h2><h3 id="1-Grub加载内核之后，第一个运行的程序是-sbin-init"><a href="#1-Grub加载内核之后，第一个运行的程序是-sbin-init" class="headerlink" title="1. Grub加载内核之后，第一个运行的程序是 /sbin/init"></a>1. Grub加载内核之后，第一个运行的程序是 /sbin/init</h3><p>init是SysVinit的一个实体进程，是系统所有进程的顶级父进程，PID是1  </p>
 <h3 id="2-sbin-init-读取-etc-inittab文件，确定运行级别"><a href="#2-sbin-init-读取-etc-inittab文件，确定运行级别" class="headerlink" title="2. /sbin/init 读取 /etc/inittab文件，确定运行级别"></a>2. /sbin/init 读取 /etc/inittab文件，确定运行级别</h3><p>etc/inittab文件的信息会包含以下信息给init程序  </p>
 <ul>
 <li>捕获组合键的定义  </li>
@@ -259,7 +259,7 @@
         <div class="card">
             <div class="card-content">
                 <!-- Duoshuo Comment BEGIN -->
-                <div class="ds-thread" data-thread-key="2017/02/19/Linux启动顺序/" data-title="" data-url="http://www.nice-jj.com/2017/02/19/Linux启动顺序/"></div>
+                <div class="ds-thread" data-thread-key="2017/02/19/Linux启动顺序/" data-title="Linux启动顺序" data-url="http://www.nice-jj.com/2017/02/19/Linux启动顺序/"></div>
 
                 <script type="text/javascript">
                     console.log(document.querySelector('.ds-thread'));
