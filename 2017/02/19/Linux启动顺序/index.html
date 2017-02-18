@@ -7,21 +7,24 @@
 
     
 
-    <title>读书 | 杨先森的博客</title>
+    <title>yd</title>
     <meta name="author" content="yd">
+    
+    <meta name="description" content="Linux启动顺序一、系统启动初始化init阶段1. Grub加载内核之后，第一个运行的程序是 /sbin/initinit是SysVinit的一个实体进程，是系统所有进程的顶级父进程，PID是1  
+2. /sbin/init 读取 /etc/inittab文件，确定运行级别etc/inittab">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="读书"/>
-    <meta property="og:site_name" content="Mr Yang Blog"/>
+    
+    <meta property="og:site_name" content="yd Blog"/>
 
     
     <meta property="og:image" content="undefined"/>
     
 
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="alternate" href="/atom.xml" title="Mr Yang Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="yd Blog" type="application/atom+xml">
     <link rel="stylesheet" href="/css/lib/materialize.min.css">
     <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
@@ -42,7 +45,7 @@
             <i class="fa fa-navicon"></i>
         </a>
         <div class="">
-            <a href="/" class="brand-logo hide-on-med-and-down">Mr Yang Blog</a>
+            <a href="/" class="brand-logo hide-on-med-and-down">yd Blog</a>
             <ul class="right hide-on-med-and-down">
                 
                     <li>
@@ -70,14 +73,6 @@
                     </li>
                 
                     <li>
-                        <a class="menu-reading " href="/reading" >
-                            <i class="fa fa-book "></i>
-                            
-                            读书
-                        </a>
-                    </li>
-                
-                    <li>
                         <a class="menu-about " href="/about" >
                             <i class="fa fa-user "></i>
                             
@@ -100,7 +95,7 @@
         <li class="side-user">
             <div class="row">
                 <div class="col s4 no-padding">
-                    <img class="avatar-image circle responsive-img" src="" alt="User Avatar">
+                    <img class="avatar-image circle responsive-img" src="/images/1.jpg" alt="User Avatar">
                 </div>
                 <div class="info col s8 valign-wrapper no-padding">
                     <div class="valign">
@@ -134,14 +129,6 @@
                     <i class="fa fa-bookmark "></i>
                     
                     分类
-                </a>
-            </li>
-        
-            <li class="no-padding">
-                <a class="waves-effect menu-reading " href="/reading" >
-                    <i class="fa fa-book "></i>
-                    
-                    读书
                 </a>
             </li>
         
@@ -190,182 +177,113 @@
 
 
     <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper black">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+
         
 
-<div class="container main-container">
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
     
-        <div class="">
-            <div class="row">
-                <ul class="tabs ">
-                    
-                        <li class="tab col s4 ">
-                            <a class="pink-text " href="#readed">已读(3)</a>
-                        </li>
-                    
-                        <li class="tab col s4 ">
-                            <a class="pink-text " href="#reading">在读(1)</a>
-                        </li>
-                    
-                        <li class="tab col s4 ">
-                            <a class="pink-text " href="#wanted">想读(1)</a>
-                        </li>
-                    
-                </ul>
+        <h1>无题</h1>
+    
+
+
             </div>
+            <time class="pink-link-context" datetime="2017-02-18T17:25:17.172Z"><a href="/2017/02/19/Linux启动顺序/">2017-02-19</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
 
             
-                <div id="readed" class="row" style="margin-top: 20px;">
-                    
-                    
-                        <div class="book-item col s12 m6">
-                            <div class="card small hoverable">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="card-cover-image activator" src="http://img3.douban.com/lpic/s23139051.jpg">
-                                </div>
-                                <div class="card-content pink-link-context">
-                                    <span class="card-title truncate activator grey-text text-darken-4">众妙之门：网站UI设计之道
-                                    </span>
-                                    <p>评分: 7
-                                        <a class="external-link right" href="http://book.douban.com/subject/20281463/" target="_blank">
 
-                                            <i class="fa fa-external-link"></i>
-                                        </a>
-                                    </p>
-                                </div>
+            <div class="toc pink-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#Linux启动顺序"><span class="section table-of-contents-text">Linux启动顺序</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一、系统启动初始化init阶段"><span class="section table-of-contents-text">一、系统启动初始化init阶段</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#1-Grub加载内核之后，第一个运行的程序是-sbin-init"><span class="section table-of-contents-text">1. Grub加载内核之后，第一个运行的程序是 /sbin/init</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#2-sbin-init-读取-etc-inittab文件，确定运行级别"><span class="section table-of-contents-text">2. /sbin/init 读取 /etc/inittab文件，确定运行级别</span></a></li></ol></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二、用户登录阶段"><span class="section table-of-contents-text">二、用户登录阶段</span></a><ol class="section table-of-contents-child"><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#7-用户登录后先执行-etc-profile"><span class="section table-of-contents-text">7. 用户登录后先执行 /etc/profile</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#8-执行-bash-profile"><span class="section table-of-contents-text">8. 执行 ~/.bash_profile</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#9-执行-bashrc"><span class="section table-of-contents-text">9. 执行 ~/.bashrc</span></a></li><li class="section table-of-contents-item section table-of-contents-level-3"><a class="section table-of-contents-link" href="#10-执行-etc-bashrc"><span class="section table-of-contents-text">10. 执行 /etc/bashrc</span></a></li></ol></li></ol></li></ol>
+</div>
 
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">简评
-                                        <i class="fa fa-times-circle-o right"></i>
-                                    </span>
 
-                                    <p>推荐非UI人士了解UI阅读。</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="book-item col s12 m6">
-                            <div class="card small hoverable">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="card-cover-image activator" src="http://img5.douban.com/lpic/s11337059.jpg">
-                                </div>
-                                <div class="card-content pink-link-context">
-                                    <span class="card-title truncate activator grey-text text-darken-4">JavaScript模式
-                                    </span>
-                                    <p>评分: 8.5
-                                        <a class="external-link right" href="http://book.douban.com/subject/11506062/" target="_blank">
+            <div class="entry pink-link-context">
+                <h1 id="Linux启动顺序"><a href="#Linux启动顺序" class="headerlink" title="Linux启动顺序"></a>Linux启动顺序</h1><h2 id="一、系统启动初始化init阶段"><a href="#一、系统启动初始化init阶段" class="headerlink" title="一、系统启动初始化init阶段"></a>一、系统启动初始化init阶段</h2><h3 id="1-Grub加载内核之后，第一个运行的程序是-sbin-init"><a href="#1-Grub加载内核之后，第一个运行的程序是-sbin-init" class="headerlink" title="1. Grub加载内核之后，第一个运行的程序是 /sbin/init"></a>1. Grub加载内核之后，第一个运行的程序是 /sbin/init</h3><p>init是SysVinit的一个实体进程，是系统所有进程的顶级父进程，PID是1  </p>
+<h3 id="2-sbin-init-读取-etc-inittab文件，确定运行级别"><a href="#2-sbin-init-读取-etc-inittab文件，确定运行级别" class="headerlink" title="2. /sbin/init 读取 /etc/inittab文件，确定运行级别"></a>2. /sbin/init 读取 /etc/inittab文件，确定运行级别</h3><p>etc/inittab文件的信息会包含以下信息给init程序  </p>
+<ul>
+<li>捕获组合键的定义  </li>
+<li>定义电源 fail/restore 脚本  </li>
+<li>启动 getty 和虚拟控制台  </li>
+<li>系统需要进入的 runlevel  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">[root@centos ~]# cat /etc/inittab</div><div class="line"># inittab is only used by upstart for the default runlevel.</div><div class="line">#</div><div class="line"># ADDING OTHER CONFIGURATION HERE WILL HAVE NO EFFECT ON YOUR SYSTEM.</div><div class="line">#</div><div class="line"># System initialization is started by /etc/init/rcS.conf</div><div class="line">#</div><div class="line"># Individual runlevels are started by /etc/init/rc.conf</div><div class="line">#</div><div class="line"># Ctrl-Alt-Delete is handled by /etc/init/control-alt-delete.conf</div><div class="line">#</div><div class="line"># Terminal gettys are handled by /etc/init/tty.conf and /etc/init/serial.conf,</div><div class="line"># with configuration in /etc/sysconfig/init.</div><div class="line">#</div><div class="line"># For information on how to write upstart event handlers, or how</div><div class="line"># upstart works, see init(5), init(8), and initctl(8).</div><div class="line">#</div><div class="line"># Default runlevel. The runlevels used are:</div><div class="line">#   0 - halt (Do NOT set initdefault to this)</div><div class="line">#   1 - Single user mode</div><div class="line">#   2 - Multiuser, without NFS (The same as 3, if you do not have networking)</div><div class="line">#   3 - Full multiuser mode</div><div class="line">#   4 - unused</div><div class="line">#   5 - X11</div><div class="line">#   6 - reboot (Do NOT set initdefault to this)</div><div class="line">#</div><div class="line">id:3:initdefault:</div><div class="line">```  </div><div class="line">当前系统使用有网络支持的多用户模式，字符终端，没有图形界面  </div><div class="line">Linux的运行等级设定如下:  </div><div class="line">&gt;0：关机  </div><div class="line">1：单用户模式  </div><div class="line">2：无网络支持的多用户模式  </div><div class="line">3：有网络支持的多用户模式  </div><div class="line">4：保留，未使用  </div><div class="line">5：有网络支持有X-Window支持的多用户模式  </div><div class="line">6：重新引导系统，即重启  </div><div class="line">### 3. /sbin/init 执行 /etc/rc.d/rc.sysinit脚本  </div><div class="line">sysinit的是系统启动的初始化脚本, 会做以下一些工作：  </div><div class="line">* 激活 udev 和 selinux  </div><div class="line">* 设置定义在/etc/sysctl.conf 中的内核参数  </div><div class="line">* 设置系统时钟  </div><div class="line">* 加载 keymaps  </div><div class="line">* 使用交换分区  </div><div class="line">* 设置主机名(hostname)  </div><div class="line">* 根分区检查和 remount  </div><div class="line">* 激活 RAID 和 LVM 设备  </div><div class="line">* 开启磁盘配额  </div><div class="line">* 检查并挂载所有文件系统  </div><div class="line">* 清除过期的 locks 和 PID 文件  </div><div class="line">### 4. /sbin/init 执行 /etc/rc.d/rc脚本  </div><div class="line">&gt;/etc/rc脚本确定 /etc/inittab文件配置的运行级别ID(X)。  </div><div class="line">每个 runlevel X 都有一个这样的目录，目录名为/etc/rc.d/rcX.d。在这些目录下存放着很多不同的脚本。  </div><div class="line">文件名以 S (start) 开头的脚本就是启动时应该运行的脚本，S 后面跟的数字定义了这些脚本的执行顺序  </div><div class="line">文件名以 K (kill) 开头的脚本表示启动的时候不执行的脚本。  </div><div class="line">在/etc/rc.d/rcX.d 目录下的脚本其实都是一些软链接文件，真实的脚本文件存放在/etc/init.d 目录下, 这个目录的文件通常被称为Linux服务启动脚本</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>[root@centos rc3.d]# pwd<br>/etc/rc3.d<br>[root@centos rc3.d]# ls -al<br>总用量 8<br>drwxr-xr-x.  2 root root 4096 11月 29 13:12 .<br>drwxr-xr-x. 10 root root 4096 1月  27 09:34 ..<br>lrwxrwxrwx.  1 root root   19 11月 29 12:49 K10saslauthd -&gt; ../init.d/saslauthd<br>lrwxrwxrwx.  1 root root   17 11月 16 2015 K30postfix -&gt; ../init.d/postfix<br>lrwxrwxrwx.  1 root root   20 11月 16 2015 K50netconsole -&gt; ../init.d/netconsole<br>lrwxrwxrwx.  1 root root   21 11月 16 2015 K87restorecond -&gt; ../init.d/restorecond<br>lrwxrwxrwx.  1 root root   15 11月 16 2015 K89rdisc -&gt; ../init.d/rdisc<br>lrwxrwxrwx.  1 root root   19 11月 16 2015 K92ip6tables -&gt; ../init.d/ip6tables<br>lrwxrwxrwx.  1 root root   18 11月 29 12:34 K92iptables -&gt; ../init.d/iptables<br>lrwxrwxrwx.  1 root root   22 11月 16 2015 S02lvm2-monitor -&gt; ../init.d/lvm2-monitor<br>lrwxrwxrwx.  1 root root   17 11月 16 2015 S10network -&gt; ../init.d/network<br>lrwxrwxrwx.  1 root root   16 11月 16 2015 S11auditd -&gt; ../init.d/auditd<br>lrwxrwxrwx.  1 root root   17 11月 16 2015 S12rsyslog -&gt; ../init.d/rsyslog<br>lrwxrwxrwx.  1 root root   26 11月 16 2015 S25blk-availability -&gt; ../init.d/blk-availability<br>lrwxrwxrwx.  1 root root   15 11月 16 2015 S25netfs -&gt; ../init.d/netfs<br>lrwxrwxrwx.  1 root root   19 11月 16 2015 S26udev-post -&gt; ../init.d/udev-post<br>lrwxrwxrwx.  1 root root   14 11月 26 08:19 S55sshd -&gt; ../init.d/sshd<br>lrwxrwxrwx.  1 root root   15 11月 16 2015 S90crond -&gt; ../init.d/crond<br>lrwxrwxrwx.  1 root root   15 11月 29 13:12 S95jexec -&gt; ../init.d/jexec<br>lrwxrwxrwx.  1 root root   11 11月 16 2015 S99local -&gt; ../rc.local<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;chkconfig 名字就是对/etc/init.d/目录下的服务脚本进行管理的工具，实际上就是对 /etc/rcX.d/下的软链接文件的增删改。  </div><div class="line">### 5. /sbin/init 执行 /etc/rc.d/rc.local 脚本  </div><div class="line">rc.local 是 Linux 留给用户进行个性化设置的地方。比如放一些自定义的启动命令  </div><div class="line">### 6. 启动登录终端/sbin/mingetty，等待登录  </div><div class="line">mingetty 会启动 /bin/login进程，用来验证帐户密码，输入正确的账户密码之后,从/etc/passwd的账户配置里面启动响应的shell,例如下面root帐户使用了bash</div></pre></td></tr></table></figure></p>
+<p>[root@centos ~]# cat /etc/passwd<br>root:x:0:0:root:/root:/bin/bash<br>bin:x:1:1:bin:/bin:/sbin/nologin<br>daemon:x:2:2:daemon:/sbin:/sbin/nologin<br>adm:x:3:4:adm:/var/adm:/sbin/nologin<br>lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin<br>sync:x:5:0:sync:/sbin:/bin/sync<br>shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown<br>halt:x:7:0:halt:/sbin:/sbin/halt<br>mail:x:8:12:mail:/var/spool/mail:/sbin/nologin<br>```  </p>
+<h2 id="二、用户登录阶段"><a href="#二、用户登录阶段" class="headerlink" title="二、用户登录阶段"></a>二、用户登录阶段</h2><h3 id="7-用户登录后先执行-etc-profile"><a href="#7-用户登录后先执行-etc-profile" class="headerlink" title="7. 用户登录后先执行 /etc/profile"></a>7. 用户登录后先执行 /etc/profile</h3><blockquote>
+<p>这个文件是所有用户登录系统后的设置环境信息,当用户第一次登录时,该文件被执行. 并从/etc/profile.d目录的配置文件中搜集shell的设置<br>紧接着profile文件里面去启动 /etc/profile.d 下的所有文件  </p>
+<h3 id="8-执行-bash-profile"><a href="#8-执行-bash-profile" class="headerlink" title="8. 执行 ~/.bash_profile"></a>8. 执行 ~/.bash_profile</h3><p>这个文件是用户专属的bash shell初始化脚本<br>当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量<br>~/.bash_profile会判断 ~/.bashrc文件是否存在并执行，~/.bashrc会判断/etc/bashrc文件是否存在并执行，最后设置PATH环境变量，结束。<br>所以~/.bashrc和/etc/bashrc都是层层嵌套执行的。  </p>
+<h3 id="9-执行-bashrc"><a href="#9-执行-bashrc" class="headerlink" title="9. 执行 ~/.bashrc"></a>9. 执行 ~/.bashrc</h3><p>这个文件是用户专属的bash shell初始化脚本<br>当登录时以及每次打开新的shell时,该文件被执行<br>~/.bashrc 会判断 /etc/bashrc文件是否存在并执行  </p>
+<h3 id="10-执行-etc-bashrc"><a href="#10-执行-etc-bashrc" class="headerlink" title="10. 执行 /etc/bashrc"></a>10. 执行 /etc/bashrc</h3><p>这个文件是bash环境的全局文件。几乎默认存在，每个登录的用户上去之后都要初始化一下bash的环境。<br>当bash shell被打开时,该文件被执行（即每次新开一个终端，都会执行bashrc）</p>
+</blockquote>
 
-                                            <i class="fa fa-external-link"></i>
-                                        </a>
-                                    </p>
-                                </div>
+                
 
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">简评
-                                        <i class="fa fa-times-circle-o right"></i>
-                                    </span>
 
-                                    <p>书很薄，但内容相当实用。</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="book-item col s12 m6">
-                            <div class="card small hoverable">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="card-cover-image activator" src="http://img3.douban.com/lpic/s11373174.jpg">
-                                </div>
-                                <div class="card-content pink-link-context">
-                                    <span class="card-title truncate activator grey-text text-darken-4">JavaScript语言精粹
-                                    </span>
-                                    <p>评分: 9.5
-                                        <a class="external-link right" href="http://book.douban.com/subject/11874748/" target="_blank">
+<p class="pink-link-context">
+    <a href="/2017/02/15/hello-world/" rel="next" title="Hello World">
+    下一篇：Hello World
+  </a>
+</p>
 
-                                            <i class="fa fa-external-link"></i>
-                                        </a>
-                                    </p>
-                                </div>
 
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">简评
-                                        <i class="fa fa-times-circle-o right"></i>
-                                    </span>
-
-                                    <p>这是一本前端人员的基础书，强烈推荐阅读，而且越早看受益越多！</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                </div>
-            
-                <div id="reading" class="row" style="margin-top: 20px;">
-                    
-                    
-                        <div class="book-item col s12 m6">
-                            <div class="card small hoverable">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="card-cover-image activator" src="http://img4.douban.com/lpic/s27881888.jpg">
-                                </div>
-                                <div class="card-content pink-link-context">
-                                    <span class="card-title truncate activator grey-text text-darken-4">网络游戏核心技术与实战
-                                    </span>
-                                    <p>评分: ???
-                                        <a class="external-link right" href="http://book.douban.com/subject/25850090/" target="_blank">
-
-                                            <i class="fa fa-external-link"></i>
-                                        </a>
-                                    </p>
-                                </div>
-
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">简评
-                                        <i class="fa fa-times-circle-o right"></i>
-                                    </span>
-
-                                    <p></p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                </div>
-            
-                <div id="wanted" class="row" style="margin-top: 20px;">
-                    
-                    
-                        <div class="book-item col s12 m6">
-                            <div class="card small hoverable">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="card-cover-image activator" src="http://img4.douban.com/lpic/s1113106.jpg">
-                                </div>
-                                <div class="card-content pink-link-context">
-                                    <span class="card-title truncate activator grey-text text-darken-4">计算机程序的构造和解释
-                                    </span>
-                                    <p>评分: ???
-                                        <a class="external-link right" href="http://book.douban.com/subject/1148282/" target="_blank">
-
-                                            <i class="fa fa-external-link"></i>
-                                        </a>
-                                    </p>
-                                </div>
-
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">简评
-                                        <i class="fa fa-times-circle-o right"></i>
-                                    </span>
-
-                                    <p></p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                </div>
-            
-
+            </div>
+			
         </div>
-        
+    </div>
+</article>
 
 
 
-    
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2017/02/19/Linux启动顺序/" data-title="" data-url="http://www.nice-jj.com/2017/02/19/Linux启动顺序/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'nice-jj'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
 </div>
 
         <div class="fixed-action-btn float-sitemap">
@@ -386,14 +304,6 @@
             
             <div class="social-group col m4 s12">
                 <h5 class="white-text">社交</h5>
-                
-                    <a class="social-link" href="" target="_blank">
-                        <i class="fa fa-2x fa-weibo"></i>
-                    </a>
-                
-                    <a class="social-link" href="" target="_blank">
-                        <i class="fa fa-2x fa-github"></i>
-                    </a>
                 
                     <a class="social-link" href="/atom.xml" target="_blank">
                         <i class="fa fa-2x fa-rss"></i>
@@ -546,7 +456,7 @@
                     }
                 }
             });
-            var searchXml = "";
+            var searchXml = "search.xml";
             if (searchXml.length == 0) {
              	searchXml = "search.xml";
             }
