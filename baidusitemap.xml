@@ -5,14 +5,24 @@
     
   <url>
     <loc>http://www.nice-jj.com/2017/02/19/Linux%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F/</loc>
-    <lastmod>2017-02-18T17:42:36.115Z</lastmod>
+    <lastmod>2017-02-20T14:16:28.332Z</lastmod>
     <data>
         <display>
         <title>Linux启动顺序</title>
         <pubTime>2017-02-18T17:25:17.172Z</pubTime>
         
+        <tag>运维</tag>
+         
+        <tag>Linux</tag>
+         
          
            
+             
+              <breadCrumb title="Linux" url="http://www.nice-jj.com/categories/Linux/"/>
+          
+             
+              <breadCrumb title="Linux启动顺序" url="http://www.nice-jj.com/categories/Linux/Linux%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F/"/>
+          
         </display>
     </data>
     </url>
