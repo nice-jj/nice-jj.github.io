@@ -274,7 +274,7 @@ LOGNAME:PASSWORD:UID:GID:USERINFO:HOME:SHELL
 
 
             <div class="toc black-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#一、-etc-passwd文件"><span class="section table-of-contents-text">一、/etc/passwd文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#二、-etc-shadow文件"><span class="section table-of-contents-text">二、/etc/shadow文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#三、-etc-group文件"><span class="section table-of-contents-text">三、/etc/group文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#四、-etc-gshadow文件"><span class="section table-of-contents-text">四、/etc/gshadow文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#五、-etc-default-useradd文件"><span class="section table-of-contents-text">五、/etc/default/useradd文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#六、-etc-login-defs文件"><span class="section table-of-contents-text">六、/etc/login.defs文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#七、-etc-skel文件夹"><span class="section table-of-contents-text">七、/etc/skel文件夹</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#八、-etc-sudoers文件的使用方法"><span class="section table-of-contents-text">八、/etc/sudoers文件的使用方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#九、useradd命令详解"><span class="section table-of-contents-text">九、useradd命令详解</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十二、账户管理的其他相关命令"><span class="section table-of-contents-text">十二、账户管理的其他相关命令</span></a></li></ol>
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#一、-etc-passwd文件"><span class="section table-of-contents-text">一、/etc/passwd文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#二、-etc-shadow文件"><span class="section table-of-contents-text">二、/etc/shadow文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#三、-etc-group文件"><span class="section table-of-contents-text">三、/etc/group文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#四、-etc-gshadow文件"><span class="section table-of-contents-text">四、/etc/gshadow文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#五、-etc-default-useradd文件"><span class="section table-of-contents-text">五、/etc/default/useradd文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#六、-etc-login-defs文件"><span class="section table-of-contents-text">六、/etc/login.defs文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#七、-etc-skel文件夹"><span class="section table-of-contents-text">七、/etc/skel文件夹</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#八、-etc-sudoers文件的使用方法"><span class="section table-of-contents-text">八、/etc/sudoers文件的使用方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#九、useradd命令详解"><span class="section table-of-contents-text">九、useradd命令详解</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十、passwd命令详解"><span class="section table-of-contents-text">十、passwd命令详解</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十一、groupadd命令详解"><span class="section table-of-contents-text">十一、groupadd命令详解</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十二、账户管理的其他相关命令"><span class="section table-of-contents-text">十二、账户管理的其他相关命令</span></a></li></ol>
 </div>
 
 
@@ -448,62 +448,160 @@ LOGNAME:PASSWORD:UID:GID:USERINFO:HOME:SHELL
 <li><p>描述  </p>
 <ul>
 <li><p>新帐号建立<br> 当不加-D参数,useradd指令使用命令列来指定新帐号的设定值and使用系统上的预设值.新使用者帐号将产生一些系统档案，使用者目录建立，拷备起始档案等，这些均可以利用命令列选项指定。此版本为RedHat Linux提供，可帮每个新加入的使用者建立个<br>别的group,毋须添加-n选项。useradd可使用的选项为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    -c comment</div><div class="line">```  </div><div class="line">&gt;新帐号password档的说明栏。</div></pre></td></tr></table></figure>
-<p> -d home_dir</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;新帐号每次登入时所使用的home_dir。预设值为default_home内login名称，并当成登入时目录名称。</div></pre></td></tr></table></figure>
-<p> -e expire_date</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;帐号终止日期。日期的指定格式为MM/DD/YY。</div></pre></td></tr></table></figure>
-<p> -f inactive_days</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;帐号过期几日后永久停权。当值为0时帐号则立刻被停权。而当值为-1时则关闭此功能，预设值为-1.</div></pre></td></tr></table></figure>
-<p> -g initial_group</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;group名称或以数字来做为使用者登入起始群组(group)。群组名须为现有存在的名称。群组数字也须为现有存在的群组。预设的群组数字为1。</div></pre></td></tr></table></figure>
-<p> -G group,[…]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;定义此使用者为此一堆groups的成员。每个群组使用&quot;,&quot;区格开来，不可以夹杂空白字元。群组名同-g选项的限制。定义值为使用者的起始群组。</div></pre></td></tr></table></figure>
-<p> -m</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用者目录如不存在则自动建立。如使用-k选项skeleton_dir内的档案将复制至使用者目录下。然而在/etc/skel目录下的档案也会复制过去取代。任何在skeleton_dir or /etc/skel的目录也相同会在使用者目录下一 一建立。The -k同-m不建立目录以及不复制任何档案为预设值。</div></pre></td></tr></table></figure>
-<p> -M</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;不建立使用者目录，即使/etc/login.defs系统档设定要建立使用者目录。</div></pre></td></tr></table></figure>
-<p> -n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;预设值使用者群组与使用者名称会相同。此选项将取消此预设值。</div></pre></td></tr></table></figure>
-<p> -r</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;此参数是用来建立系统帐号。系统帐号的UID会比定义在系统档上/etc/login.defs.的UID_MIN来的小。注意useradd此用法所建立</div><div class="line"> 的帐号不会建立使用者目录，也不会在乎纪录在/etc/login.defs.的定义值。如果你想要有使用者目录须额外指定-m参数来建立</div><div class="line"> 系统帐号。这是REDHAT额外增设的选项。</div></pre></td></tr></table></figure>
-<p> -s shell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用者登入后使用的shell名称。预设为不填写，这样系统会帮你指定预设的登入shell。</div></pre></td></tr></table></figure>
-<p> -u uid</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;使用者的ID值。必须为唯一的ID值，除非用-o选项。数字不可为负值。预设为最小不得小于999而逐次增加。0~999传统上是保留给系统帐号使用。</div><div class="line"></div><div class="line"> * 改变预设值  </div><div class="line">当-D选项出现时，useradd秀出现在的预设值，或是藉由命令列的方式更新预设值。可用选项为∶</div></pre></td></tr></table></figure>
-<p> -b default_home</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;定义使用者所属目录的前一个目录。使用者名称会附加在default_home后面用来建立新使用者的目录。当然使用-d后则此选项无效。</div></pre></td></tr></table></figure>
-<p> -e default_expire_date</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用者帐号停止日期。</div></pre></td></tr></table></figure>
-<p> -f default_inactive</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;帐号过期几日后停权。</div></pre></td></tr></table></figure>
-<p> -g default_group</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;新帐号起始群组名或ID。群组名须为现有存在的名称。群组ID也须为现有存在的群组。</div></pre></td></tr></table></figure>
-<p> -s default_shell</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   &gt;使用者登入后使用的shell名称。往后新加入的帐号都将使用此shell。如不指定任何参数，useradd显示目前预设的值。  </div><div class="line"></div><div class="line"># 十、passwd命令详解</div><div class="line">* 名称：passwd - 更新用户的身份验证令牌  </div><div class="line">* 语法：</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-c comment</div></pre></td></tr></table></figure>
+<blockquote>
+<p>新帐号password档的说明栏。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-d home_dir</div></pre></td></tr></table></figure>
+<blockquote>
+<p>新帐号每次登入时所使用的home_dir。预设值为default_home内login名称，并当成登入时目录名称。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-e expire_date</div></pre></td></tr></table></figure>
+<blockquote>
+<p>帐号终止日期。日期的指定格式为MM/DD/YY。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-f inactive_days</div></pre></td></tr></table></figure>
+<blockquote>
+<p>帐号过期几日后永久停权。当值为0时帐号则立刻被停权。而当值为-1时则关闭此功能，预设值为-1.  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-g initial_group</div></pre></td></tr></table></figure>
+<blockquote>
+<p>group名称或以数字来做为使用者登入起始群组(group)。群组名须为现有存在的名称。群组数字也须为现有存在的群组。预设的群组数字为1。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-G group,[...]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>定义此使用者为此一堆groups的成员。每个群组使用”,”区格开来，不可以夹杂空白字元。群组名同-g选项的限制。定义值为使用者的起始群组。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-m</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用者目录如不存在则自动建立。如使用-k选项skeleton_dir内的档案将复制至使用者目录下。然而在/etc/skel目录下的档案也会复制过去取代。任何在skeleton_dir or /etc/skel的目录也相同会在使用者目录下一 一建立。The -k同-m不建立目录以及不复制任何档案为预设值。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-M</div></pre></td></tr></table></figure>
+<blockquote>
+<p>不建立使用者目录，即使/etc/login.defs系统档设定要建立使用者目录。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-n</div></pre></td></tr></table></figure>
+<blockquote>
+<p>预设值使用者群组与使用者名称会相同。此选项将取消此预设值。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-r</div></pre></td></tr></table></figure>
+<blockquote>
+<p>此参数是用来建立系统帐号。系统帐号的UID会比定义在系统档上/etc/login.defs.的UID_MIN来的小。注意useradd此用法所建立<br>的帐号不会建立使用者目录，也不会在乎纪录在/etc/login.defs.的定义值。如果你想要有使用者目录须额外指定-m参数来建立<br>系统帐号。这是REDHAT额外增设的选项。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-s shell</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用者登入后使用的shell名称。预设为不填写，这样系统会帮你指定预设的登入shell。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-u uid</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用者的ID值。必须为唯一的ID值，除非用-o选项。数字不可为负值。预设为最小不得小于999而逐次增加。0~999传统上是保留给系统帐号使用。</p>
+</blockquote>
+</li>
+<li><p>改变预设值<br>当-D选项出现时，useradd秀出现在的预设值，或是藉由命令列的方式更新预设值。可用选项为∶  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-b default_home</div></pre></td></tr></table></figure>
+<blockquote>
+<p>定义使用者所属目录的前一个目录。使用者名称会附加在default_home后面用来建立新使用者的目录。当然使用-d后则此选项无效。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-e default_expire_date</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用者帐号停止日期。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-f default_inactive</div></pre></td></tr></table></figure>
+<blockquote>
+<p>帐号过期几日后停权。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-g default_group</div></pre></td></tr></table></figure>
+<blockquote>
+<p>新帐号起始群组名或ID。群组名须为现有存在的名称。群组ID也须为现有存在的群组。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-s default_shell</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用者登入后使用的shell名称。往后新加入的帐号都将使用此shell。如不指定任何参数，useradd显示目前预设的值。</p>
+</blockquote>
 </li>
 </ul>
 </li>
 </ul>
-<p>passwd [-k] [-l] [-u [-f]] [-d] [-e] [-n mindays] [-x maxdays]<br>      [-w warndays] [-i inactivedays] [-S] [–stdin] [username]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 参数</div></pre></td></tr></table></figure></p>
-<p>  -k<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使即将过期的密码仍保持使用。</div></pre></td></tr></table></figure></p>
-<p>  -l<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;锁住用户无权更改其密码，仅能通过root权限操作。</div></pre></td></tr></table></figure></p>
-<p>  -u<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用-l参数后，再使用此参数解锁，仅能通过root权限操作。</div></pre></td></tr></table></figure></p>
-<p>  -d<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;删除用户密码，仅能通过root权限操作。</div></pre></td></tr></table></figure></p>
-<p>  -e<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;指定密码到期时间，用户在下次登录的时候强制更改密码。</div></pre></td></tr></table></figure></p>
-<p>  -n<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用户在多少天内必须更改密码。</div></pre></td></tr></table></figure></p>
-<p>  -x<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;指定用户密码最长使用期限。</div></pre></td></tr></table></figure></p>
-<p>  -w<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;密码更改警告天数，告诉用户，N天后，密码将过期。</div></pre></td></tr></table></figure></p>
-<p>  -i<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;当用户密码过期后，用户再经过 ‘n‘ 天后没有更改其密码，用户将不能登录</div></pre></td></tr></table></figure></p>
-<p>  -S<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  &gt;显示指定使用者的密码认证种类, 只有具备 root 权限的使用者方可使用。  </div><div class="line"></div><div class="line"># 十一、groupadd命令详解</div><div class="line">* 名称：groupadd - 创建一个用户组  </div><div class="line">* 语法：</div></pre></td></tr></table></figure></p>
-<p>groupadd [options] group<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 参数</div></pre></td></tr></table></figure></p>
-<p>  -f<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用此参数时, 即使指定的组已经存在, 命令依然会正常退出(不返回错误), 当和-g一起使用时, 如果指定的GID已经存在, 则会自动使用另一个GID。</div></pre></td></tr></table></figure></p>
-<p>  -g<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;在创建组时，指定GID号。</div></pre></td></tr></table></figure></p>
-<p>  -h<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;限制帮助消息并退出。</div></pre></td></tr></table></figure></p>
-<p>  -K<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;覆盖/etc/login.defs文件中的默认值，可使用多个-K选项。</div></pre></td></tr></table></figure></p>
-<p>  -o<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;新建用户组时，指定一个已经存在的GID。</div></pre></td></tr></table></figure></p>
-<p>  -p<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;新建用户组时，为此用户组设置密码。</div></pre></td></tr></table></figure></p>
-<p>  -r<br>  ```</p>
+<h1 id="十、passwd命令详解"><a href="#十、passwd命令详解" class="headerlink" title="十、passwd命令详解"></a>十、passwd命令详解</h1><ul>
+<li>名称：passwd - 更新用户的身份验证令牌  </li>
+<li><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">passwd [-k] [-l] [-u [-f]] [-d] [-e] [-n mindays] [-x maxdays]  </div><div class="line">      [-w warndays] [-i inactivedays] [-S] [--stdin] [username]</div></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-k</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使即将过期的密码仍保持使用。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-l</div></pre></td></tr></table></figure>
+<blockquote>
+<p>锁住用户无权更改其密码，仅能通过root权限操作。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-u</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用-l参数后，再使用此参数解锁，仅能通过root权限操作。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-d</div></pre></td></tr></table></figure>
+<blockquote>
+<p>删除用户密码，仅能通过root权限操作。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-e</div></pre></td></tr></table></figure>
+<blockquote>
+<p>指定密码到期时间，用户在下次登录的时候强制更改密码。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-n</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用户在多少天内必须更改密码。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-x</div></pre></td></tr></table></figure>
+<blockquote>
+<p>指定用户密码最长使用期限。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-w</div></pre></td></tr></table></figure>
+<blockquote>
+<p>密码更改警告天数，告诉用户，N天后，密码将过期。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-i</div></pre></td></tr></table></figure>
+<blockquote>
+<p>当用户密码过期后，用户再经过 ‘n‘ 天后没有更改其密码，用户将不能登录  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-S</div></pre></td></tr></table></figure>
+<blockquote>
+<p>显示指定使用者的密码认证种类, 只有具备 root 权限的使用者方可使用。  </p>
+</blockquote>
+</li>
+</ul>
+<h1 id="十一、groupadd命令详解"><a href="#十一、groupadd命令详解" class="headerlink" title="十一、groupadd命令详解"></a>十一、groupadd命令详解</h1><ul>
+<li>名称：groupadd - 创建一个用户组  </li>
+<li>语法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">groupadd [options] group</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>参数  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-f</div></pre></td></tr></table></figure>
+<blockquote>
+<p>使用此参数时, 即使指定的组已经存在, 命令依然会正常退出(不返回错误), 当和-g一起使用时, 如果指定的GID已经存在, 则会自动使用另一个GID。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-g</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在创建组时，指定GID号。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-h</div></pre></td></tr></table></figure>
+<blockquote>
+<p>限制帮助消息并退出。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-K</div></pre></td></tr></table></figure>
+<blockquote>
+<p>覆盖/etc/login.defs文件中的默认值，可使用多个-K选项。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-o</div></pre></td></tr></table></figure>
+<blockquote>
+<p>新建用户组时，指定一个已经存在的GID。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-p</div></pre></td></tr></table></figure>
+<blockquote>
+<p>新建用户组时，为此用户组设置密码。  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-r</div></pre></td></tr></table></figure>
 <blockquote>
 <p>建立系统用户组，GID低于499。</p>
 </blockquote>
@@ -516,6 +614,8 @@ LOGNAME:PASSWORD:UID:GID:USERINFO:HOME:SHELL
 </li>
 <li>usermod——修改账户相关信息</li>
 <li>chash——用于修改用户登录的shell</li>
+</ul>
+</li>
 </ul>
 
                 
