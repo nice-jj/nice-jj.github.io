@@ -85,4 +85,28 @@
     
   </entry>
   
+  <entry>
+    <title>Linux账户管理</title>
+    <link href="http://www.nice-jj.com/2017/02/08/Linux%E8%B4%A6%E6%88%B7%E7%AE%A1%E7%90%86/"/>
+    <id>http://www.nice-jj.com/2017/02/08/Linux账户管理/</id>
+    <published>2017-02-08T07:11:51.943Z</published>
+    <updated>2017-02-28T06:02:17.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;一、-etc-passwd文件&quot;&gt;&lt;a href=&quot;#一、-etc-passwd文件&quot; class=&quot;headerlink&quot; title=&quot;一、/etc/passwd文件&quot;&gt;&lt;/a&gt;一、/etc/passwd文件&lt;/h1&gt;&lt;p&gt;/etc/passwd文件是Linu
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.nice-jj.com/categories/Linux/"/>
+    
+      <category term="Linux账户管理" scheme="http://www.nice-jj.com/categories/Linux/Linux%E8%B4%A6%E6%88%B7%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="运维" scheme="http://www.nice-jj.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="Linux" scheme="http://www.nice-jj.com/tags/Linux/"/>
+    
+  </entry>
+  
 </feed>

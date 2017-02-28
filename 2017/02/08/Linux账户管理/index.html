@@ -1,0 +1,880 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+
+    <title>Linux账户管理 | yd</title>
+    <meta name="author" content="yd">
+    
+    <meta name="description" content="一、/etc/passwd文件/etc/passwd文件是Linux/UNIX安全的关键文件之一.该文件用于用户登录时校验 用户的口令,当然应当仅对root可写.文件中每行的一般格式为: 
+LOGNAME:PASSWORD:UID:GID:USERINFO:HOME:SHELL 
+每行的头两项是登录">
+    
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta property="og:title" content="Linux账户管理"/>
+    <meta property="og:site_name" content="yd Blog"/>
+
+    
+    <meta property="og:image" content="undefined"/>
+    
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="alternate" href="/atom.xml" title="yd Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/materialize.min.css">
+    <link rel="stylesheet" href="/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify-tomorrow-night-eighties.css" type="text/css">
+    
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+
+<body>
+    <img src="/weixin_favicon.png" style="position: absolute; left: -9999px; opacity: 0; filter: alpha(opacity=0);">
+
+    <nav class="black">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down">yd Blog</a>
+            <ul class="right hide-on-med-and-down">
+                
+                    <li>
+                        <a class="menu-home " href="/" >
+                            <i class="fa fa-home "></i>
+                            
+                            首页
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-archive " href="/archives" >
+                            <i class="fa fa-archive "></i>
+                            
+                            归档
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                            <i class="fa fa-bookmark "></i>
+                            
+                            分类
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-about " href="/about" >
+                            <i class="fa fa-user "></i>
+                            
+                            关于
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="menu-search modal-trigger " href="#search" >
+                            <i class="fa fa-search "></i>
+                            
+                            搜索
+                        </a>
+                    </li>
+                
+            </ul>
+            <div>
+    <ul class="side-nav grey darken-4" id="main-menu">
+        
+        <li class="side-user">
+            <div class="row">
+                <div class="col s4 no-padding">
+                    <img class="avatar-image circle responsive-img" src="/images/1.jpg" alt="User Avatar">
+                </div>
+                <div class="info col s8 valign-wrapper no-padding">
+                    <div class="valign">
+                        <p class="name">yd</p>
+                        <p class="desc">网络安全/信息安全/web安全</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
+
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-home " href="/" >
+                    <i class="fa fa-home "></i>
+                    
+                    首页
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-archive " href="/archives" >
+                    <i class="fa fa-archive "></i>
+                    
+                    归档
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-category category-menu" href="javascript:;" data-activates="category-menu" >
+                    <i class="fa fa-bookmark "></i>
+                    
+                    分类
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-about " href="/about" >
+                    <i class="fa fa-user "></i>
+                    
+                    关于
+                </a>
+            </li>
+        
+            <li class="no-padding">
+                <a class="waves-effect menu-search modal-trigger " href="#search" >
+                    <i class="fa fa-search "></i>
+                    
+                    搜索
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="side-nav grey darken-4" id="category-menu">
+    
+
+            
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Linux/">
+                    Linux <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Linux/Linux账户管理/">
+                    Linux账户管理 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Linux/Linux启动顺序/">
+                    Linux启动顺序 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Linux/Linux服务启动配置文件的作用和流程/">
+                    Linux服务启动配置文件的作用和流程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/计算机网络/">
+                    计算机网络 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/计算机网络/Windows路由表设置/">
+                    Windows路由表设置 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+    </ul>
+</div>
+
+        </div>
+    </div>
+</nav>
+
+<div id="search" class="modal search-modal">
+    <div class="row">
+        <div class="input-field col s12">
+              <input id="search-input" type="text">
+              <label for="search-input">搜索</label>
+        </div>
+
+    </div>
+    <div id="search-result" class="search-result col s12">
+
+    </div>
+</div>
+
+
+    <main>
+        <div class="container main-container">
+    <nav class="page-nav hide-on-small-only">
+    <div class="nav-wrapper black">
+        <span class="breadcrumb">当前位置（分类目录）</span>
+        
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Linux/">Linux</a><a class="breadcrumb" href="/categories/Linux/Linux账户管理/">Linux账户管理</a>
+
+
+        
+
+        
+    </div>
+</nav>
+
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Linux账户管理</h1>
+    
+
+
+            </div>
+            <time class="black-link-context" datetime="2017-02-08T07:11:51.943Z"><a href="/2017/02/08/Linux账户管理/">2017-02-08</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
+        
+            <a href="/tags/运维/" class="chip green accent-4">运维</a>
+        
+            <a href="/tags/Linux/" class="chip green accent-4">Linux</a>
+        
+    </div>
+
+
+            <div class="toc black-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#一、-etc-passwd文件"><span class="section table-of-contents-text">一、/etc/passwd文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#二、-etc-shadow文件"><span class="section table-of-contents-text">二、/etc/shadow文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#三、-etc-group文件"><span class="section table-of-contents-text">三、/etc/group文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#四、-etc-gshadow文件"><span class="section table-of-contents-text">四、/etc/gshadow文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#五、-etc-default-useradd文件"><span class="section table-of-contents-text">五、/etc/default/useradd文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#六、-etc-login-defs文件"><span class="section table-of-contents-text">六、/etc/login.defs文件</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#七、-etc-skel文件夹"><span class="section table-of-contents-text">七、/etc/skel文件夹</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#八、-etc-sudoers文件的使用方法"><span class="section table-of-contents-text">八、/etc/sudoers文件的使用方法</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#九、useradd命令详解"><span class="section table-of-contents-text">九、useradd命令详解</span></a></li><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#十二、账户管理的其他相关命令"><span class="section table-of-contents-text">十二、账户管理的其他相关命令</span></a></li></ol>
+</div>
+
+
+            <div class="entry black-link-context">
+                <h1 id="一、-etc-passwd文件"><a href="#一、-etc-passwd文件" class="headerlink" title="一、/etc/passwd文件"></a>一、/etc/passwd文件</h1><p>/etc/passwd文件是Linux/UNIX安全的关键文件之一.该文件用于用户登录时校验 用户的口令,当然应当仅对root可写.文件中每行的一般格式为: </p>
+<p>LOGNAME:PASSWORD:UID:GID:USERINFO:HOME:SHELL </p>
+<p>每行的头两项是登录名和加密后的口令,后面的两个数是UID和GID,接着的一项是系统管理员想写入的有关该用户的任何信息,最后两项是两个路径名: 一个是分配给用户的HOME目录,第二个是用户登录后将执行的shell(若为空格则缺省为/bin/bash)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[root@localhost init.d]# cat /etc/passwd</div><div class="line">root:x:0:0:root:/root:/bin/bash</div><div class="line">bin:x:1:1:bin:/bin:/sbin/nologin</div><div class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</div><div class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</div><div class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</div><div class="line">sync:x:5:0:sync:/sbin:/bin/sync</div><div class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</div><div class="line">halt:x:7:0:halt:/sbin:/sbin/halt</div><div class="line">mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</div><div class="line">uucp:x:10:14:uucp:/var/spool/uucp:/sbin/nologin</div><div class="line">operator:x:11:0:operator:/root:/sbin/nologin</div><div class="line">games:x:12:100:games:/usr/games:/sbin/nologin</div><div class="line">gopher:x:13:30:gopher:/var/gopher:/sbin/nologin</div><div class="line">ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</div><div class="line">nobody:x:99:99:Nobody:/:/sbin/nologin</div><div class="line">dbus:x:81:81:System message bus:/:/sbin/nologin</div><div class="line">vcsa:x:69:69:virtual console memory owner:/dev:/sbin/nologin</div><div class="line">saslauth:x:499:76:&quot;Saslauthd user&quot;:/var/empty/saslauth:/sbin/nologin</div><div class="line">postfix:x:89:89::/var/spool/postfix:/sbin/nologin</div><div class="line">sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</div></pre></td></tr></table></figure></p>
+<p>每行代表一个用户，用冒号分隔来定义用户的属性,以第一行“root:x:0:0:root:/root:/bin/bash”为例，依次说明：  </p>
+<ul>
+<li>root代表登录名称。  </li>
+<li>x代表密码，但实际密码存放于/etc/shadow文件中，如果是*表示不能登录，如果为空是不需要密码即可登录。</li>
+<li>此项表示用户ID，是用户在内核中的唯一标识。</li>
+<li>用户组ID，是/etc/group用户组中的ID，用户组可定义用户的权限。</li>
+<li>用户的真正名称，包含用户的一些信息，如用户的真实姓名，电话等。</li>
+<li>用户的主目录，当用户登录后，将此目录作为工作目录。</li>
+<li>用户使用的命令行，即用户在登录后运行的终端程序。当设置为/sbin/nologin时表示此账户不可登录。<br>其中超级用户root的UID和GID为0，有一些用户没有登录权限，nobody的权限最小，它没有写入权限，为了安全考虑，可以用它来运行一些程序。  </li>
+</ul>
+<h1 id="二、-etc-shadow文件"><a href="#二、-etc-shadow文件" class="headerlink" title="二、/etc/shadow文件"></a>二、/etc/shadow文件</h1><p>此文件存放着Linux用户的密码，包含用户的验证信息、经过加密的密码、密码过期日期等。</p>
+<p>文件格式与/etc/passwd类似，字段之间用冒号分隔。<br>格式：  </p>
+<blockquote>
+<p>登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:警告时间:不活动时间:失效时间:标志  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[root@localhost init.d]# cat /etc/shadow</div><div class="line">root:$6$QcYGGtNvT5/BAXCP$CBZHUaReIswP1sD9Tik/WvF1dZErMzAVd5f9ybJnPW/lGX.ikAVSOWQMzm9pyxvew8u6Kw2MGW70FuDV9Yvp1/:17204:0:99999:7:::</div><div class="line">bin:*:15628:0:99999:7:::</div><div class="line">daemon:*:15628:0:99999:7:::</div><div class="line">adm:*:15628:0:99999:7:::</div><div class="line">lp:*:15628:0:99999:7:::</div><div class="line">sync:*:15628:0:99999:7:::</div><div class="line">shutdown:*:15628:0:99999:7:::</div><div class="line">halt:*:15628:0:99999:7:::</div><div class="line">mail:*:15628:0:99999:7:::</div><div class="line">uucp:*:15628:0:99999:7:::</div><div class="line">operator:*:15628:0:99999:7:::</div><div class="line">games:*:15628:0:99999:7:::</div><div class="line">gopher:*:15628:0:99999:7:::</div><div class="line">ftp:*:15628:0:99999:7:::</div><div class="line">nobody:*:15628:0:99999:7:::</div><div class="line">dbus:!!:17204::::::</div><div class="line">vcsa:!!:17204::::::</div><div class="line">saslauth:!!:17204::::::</div><div class="line">postfix:!!:17204::::::</div><div class="line">sshd:!!:17204::::::</div></pre></td></tr></table></figure>
+<p>以第一行root为例，依次说明：  </p>
+<ul>
+<li>“登录名”是与/etc/passwd文件中的登录名相一致的用户账号</li>
+<li>“口令”字段放的是用户的密码，如果为空，则对应的用户不需要密码即可登录。如果是*代表帐号被锁定，是！！表示这个密码已经过期。  <blockquote>
+<p>$1$ 表明是用MD5加密的<br>$2$ 是用Blowfish加密的<br>$5$ 是用SHA-256加密的<br>$6$开头的，表明是用SHA-512加密的  </p>
+</blockquote>
+</li>
+<li>“最后一次修改时间”表示的是从某个时刻起，到用户最后一次修改口令时的天数</li>
+<li>“最小时间间隔”指的是两次修改口令之间所需的最小天数</li>
+<li>“最大时间间隔”指的是口令保持有效的最大天数</li>
+<li>“警告时间”字段表示的是从系统开始警告用户到用户密码正式失效之间的天数</li>
+<li>“不活动时间”表示的是用户没有登录活动但账号仍能保持有效的最大天数</li>
+<li>“失效时间”字段给出的是一个绝对的天数，如果使用了这个字段，那么就给出相应账号的生存期。期满后，该账号就不再是一个合法的账号，也就不能再用来登录了  </li>
+</ul>
+<h1 id="三、-etc-group文件"><a href="#三、-etc-group文件" class="headerlink" title="三、/etc/group文件"></a>三、/etc/group文件</h1><p>用户组所有的所有信息都存放在该文件中，格式如下：  </p>
+<blockquote>
+<p>组名:口令:组标识号:组内用户列表  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">[root@localhost etc]# cat /etc/group</div><div class="line">root:x:0:</div><div class="line">bin:x:1:bin,daemon</div><div class="line">daemon:x:2:bin,daemon</div><div class="line">sys:x:3:bin,adm</div><div class="line">adm:x:4:adm,daemon</div><div class="line">tty:x:5:</div><div class="line">disk:x:6:</div><div class="line">lp:x:7:daemon</div><div class="line">mem:x:8:</div><div class="line">kmem:x:9:</div><div class="line">wheel:x:10:</div><div class="line">mail:x:12:mail,postfix</div><div class="line">uucp:x:14:</div><div class="line">man:x:15:</div><div class="line">games:x:20:</div><div class="line">gopher:x:30:</div><div class="line">video:x:39:</div><div class="line">dip:x:40:</div><div class="line">ftp:x:50:</div><div class="line">lock:x:54:</div><div class="line">audio:x:63:</div><div class="line">nobody:x:99:</div><div class="line">users:x:100:</div><div class="line">utmp:x:22:</div><div class="line">utempter:x:35:</div><div class="line">dbus:x:81:</div><div class="line">floppy:x:19:</div><div class="line">vcsa:x:69:</div><div class="line">cdrom:x:11:</div><div class="line">tape:x:33:</div><div class="line">dialout:x:18:</div><div class="line">saslauth:x:76:</div><div class="line">postdrop:x:90:</div><div class="line">postfix:x:89:</div><div class="line">sshd:x:74:</div></pre></td></tr></table></figure>
+<p>具体解释：  </p>
+<ul>
+<li>组名：是用户组的名称，由字母或数字组成</li>
+<li>口令：存放用户组加密后的口令，一般这个字段为空或为*</li>
+<li>组标识号：组标识号跟用户的标识号一个意思，被系统内部用来标识组，别称GID</li>
+<li>组内用户列表：存放属于这个组的用户，不同的用户用逗号（,）分隔  </li>
+</ul>
+<p>一些常见用户组的作用：</p>
+<ul>
+<li>root组：超级用户组，具有最高权限</li>
+<li>bin组：此用户组可管理大部分命令</li>
+<li>daemon组：可管理后台进程</li>
+<li>sys组：可管理系统文件</li>
+<li>adm组：类似 wheel 的管理器群组，这个组的权限允许该组成员不用 su 就能读取日志文件</li>
+<li>tty组：操作ttyAMA0串口</li>
+<li>lp组：访问打印设备，管理打印服务</li>
+<li>whell组：管理组，通常用于　sudo　和 su 命令权限</li>
+</ul>
+<h1 id="四、-etc-gshadow文件"><a href="#四、-etc-gshadow文件" class="headerlink" title="四、/etc/gshadow文件"></a>四、/etc/gshadow文件</h1><p>/etc/gshadow是/etc/group的加密资讯文件,用户组的管理密码存放在这个文件中。<br>格式如下：  </p>
+<blockquote>
+<p>组名：口令：组管理者：组内用户列表  </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">[root@localhost etc]# cat /etc/gshadow</div><div class="line">root:::</div><div class="line">bin:::bin,daemon</div><div class="line">daemon:::bin,daemon</div><div class="line">sys:::bin,adm</div><div class="line">adm:::adm,daemon</div><div class="line">tty:::</div><div class="line">disk:::</div><div class="line">lp:::daemon</div><div class="line">mem:::</div><div class="line">kmem:::</div><div class="line">wheel:::</div><div class="line">mail:::mail,postfix</div><div class="line">uucp:::</div><div class="line">man:::</div><div class="line">games:::</div><div class="line">gopher:::</div><div class="line">video:::</div><div class="line">dip:::</div><div class="line">ftp:::</div><div class="line">lock:::</div><div class="line">audio:::</div><div class="line">nobody:::</div><div class="line">users:::</div><div class="line">utmp:!::</div><div class="line">utempter:!::</div><div class="line">dbus:!::</div><div class="line">floppy:!::</div><div class="line">vcsa:!::</div><div class="line">cdrom:!::</div><div class="line">tape:!::</div><div class="line">dialout:!::</div><div class="line">saslauth:!::</div><div class="line">postdrop:!::</div><div class="line">postfix:!::</div><div class="line">sshd:!::</div></pre></td></tr></table></figure>
+<p>具体解释：  </p>
+<ul>
+<li>组名：是用户组的名称，由字母或数字构成</li>
+<li>口令：用户组密码，这个段可以是空的或!，如果是空的或有!，表示没有密码</li>
+<li>组管理者：这个字段也可为空，如果有多个用户组管理者，用逗号（,）分割 </li>
+<li>组内用户列表：如果有多个成员，用逗号（,）分割  </li>
+</ul>
+<h1 id="五、-etc-default-useradd文件"><a href="#五、-etc-default-useradd文件" class="headerlink" title="五、/etc/default/useradd文件"></a>五、/etc/default/useradd文件</h1><p>/etc/default/useradd为在创建用户时使用的规则文件，即使用useradd添加用户不使用任何参数时，将读取此文件的配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[root@localhost etc]# cat /etc/default/useradd </div><div class="line"># useradd defaults file</div><div class="line">GROUP=100</div><div class="line">HOME=/home</div><div class="line">INACTIVE=-1</div><div class="line">EXPIRE=</div><div class="line">SHELL=/bin/bash</div><div class="line">SKEL=/etc/skel</div><div class="line">CREATE_MAIL_SPOOL=yes</div></pre></td></tr></table></figure></p>
+<p>具体解释：</p>
+<ul>
+<li>GROUP=100<blockquote>
+<p>用户组ID</p>
+</blockquote>
+</li>
+<li>HOME=/home<blockquote>
+<p>用户的主目录</p>
+</blockquote>
+</li>
+<li>INACTIVE=-1<blockquote>
+<p>是否启用帐号过期停权，-1表示不启用</p>
+</blockquote>
+</li>
+<li>EXPIRE=<blockquote>
+<p>帐号终止日期，不设置表示不启用</p>
+</blockquote>
+</li>
+<li>SHELL=/bin/bash<blockquote>
+<p>新建账户使用shell的种类，默认使用bash</p>
+</blockquote>
+</li>
+<li>SKEL=/etc/skel<blockquote>
+<p>默认添加用户的目录默认文件存放位置。也就是说，当用户用useradd添加用户时，用户主目录下的文件都是从这个目录中复制的</p>
+</blockquote>
+</li>
+<li>CREATE_MAIL_SPOOL=yes<blockquote>
+<p>是否创建邮箱缓存，yes表示创建  </p>
+</blockquote>
+</li>
+</ul>
+<h1 id="六、-etc-login-defs文件"><a href="#六、-etc-login-defs文件" class="headerlink" title="六、/etc/login.defs文件"></a>六、/etc/login.defs文件</h1><p>该文件设置用户帐号限制的文件，比如密码的最大过期天数、密码的最大长度。但该文件的设置对root账户无效，且优先级低于/etc/shadow，如果/etc/shadow有相同的配置，则以/etc/shadow为准。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# cat /etc/login.defs </div><div class="line">#</div><div class="line"># Please note that the parameters in this configuration file control the</div><div class="line"># behavior of the tools from the shadow-utils component. None of these</div><div class="line"># tools uses the PAM mechanism, and the utilities that use PAM (such as the</div><div class="line"># passwd command) should therefore be configured elsewhere. Refer to</div><div class="line"># /etc/pam.d/system-auth for more information.</div><div class="line">#</div><div class="line"></div><div class="line"># *REQUIRED*</div><div class="line">#   Directory where mailboxes reside, _or_ name of file, relative to the</div><div class="line">#   home directory.  If you _do_ define both, MAIL_DIR takes precedence.</div><div class="line">#   QMAIL_DIR is for Qmail</div><div class="line">#</div><div class="line">#QMAIL_DIR	Maildir</div><div class="line">MAIL_DIR	/var/spool/mail</div><div class="line">#MAIL_FILE	.mail</div><div class="line"></div><div class="line"># Password aging controls:</div><div class="line">#</div><div class="line">#	PASS_MAX_DAYS	Maximum number of days a password may be used.</div><div class="line">#	PASS_MIN_DAYS	Minimum number of days allowed between password changes.</div><div class="line">#	PASS_MIN_LEN	Minimum acceptable password length.</div><div class="line">#	PASS_WARN_AGE	Number of days warning given before a password expires.</div><div class="line">#</div><div class="line">PASS_MAX_DAYS	99999</div><div class="line">PASS_MIN_DAYS	0</div><div class="line">PASS_MIN_LEN	5</div><div class="line">PASS_WARN_AGE	7</div><div class="line"></div><div class="line">#</div><div class="line"># Min/max values for automatic uid selection in useradd</div><div class="line">#</div><div class="line">UID_MIN			  500</div><div class="line">UID_MAX			60000</div><div class="line"></div><div class="line">#</div><div class="line"># Min/max values for automatic gid selection in groupadd</div><div class="line">#</div><div class="line">GID_MIN			  500</div><div class="line">GID_MAX			60000</div><div class="line"></div><div class="line">#</div><div class="line"># If defined, this command is run when removing a user.</div><div class="line"># It should remove any at/cron/print jobs etc. owned by</div><div class="line"># the user to be removed (passed as the first argument).</div><div class="line">#</div><div class="line">#USERDEL_CMD	/usr/sbin/userdel_local</div><div class="line"></div><div class="line">#</div><div class="line"># If useradd should create home directories for users by default</div><div class="line"># On RH systems, we do. This option is overridden with the -m flag on</div><div class="line"># useradd command line.</div><div class="line">#</div><div class="line">CREATE_HOME	yes</div><div class="line"></div><div class="line"># The permission mask is initialized to this value. If not specified, </div><div class="line"># the permission mask will be initialized to 022.</div><div class="line">UMASK           077</div><div class="line"></div><div class="line"># This enables userdel to remove user groups if no members exist.</div><div class="line">#</div><div class="line">USERGROUPS_ENAB yes</div><div class="line"></div><div class="line"># Use SHA512 to encrypt password.</div><div class="line">ENCRYPT_METHOD SHA512</div></pre></td></tr></table></figure></p>
+<p>具体解释：</p>
+<ul>
+<li>MAIL_DIR    /var/spool/mail<blockquote>
+<p>创建用户时，要在目录/var/spool/mail中创建一个用户mail文件</p>
+</blockquote>
+</li>
+<li>PASS_MAX_DAYS    99999<blockquote>
+<p>密码的最大有效期天数</p>
+</blockquote>
+</li>
+<li>PASS_MIN_DAYS    0<blockquote>
+<p>两次修改密码所需间隔的最小天数</p>
+</blockquote>
+</li>
+<li>PASS_MIN_LEN    5<blockquote>
+<p>密码的最小长度，对root无效</p>
+</blockquote>
+</li>
+<li>PASS_WARN_AGE    7<blockquote>
+<p>密码过期前多少天提示</p>
+</blockquote>
+</li>
+<li>UID_MIN              500<blockquote>
+<p>创建用户时，默认使用的最小UID</p>
+</blockquote>
+</li>
+<li>GID_MAX            60000<blockquote>
+<p>创建用户时，最大UID，即在创建用户时，不指定UID，则默认UID范围为500-60000</p>
+</blockquote>
+</li>
+<li>USERDEL_CMD    /usr/sbin/userdel_local<blockquote>
+<p>删除用户时，所需要执行的脚本</p>
+</blockquote>
+</li>
+<li>CREATE_HOME    yes<blockquote>
+<p>在使用useradd创建用户时，在不加 -M 及 -m 时，是否主动建立用户主目录</p>
+</blockquote>
+</li>
+<li>UMASK           077<blockquote>
+<p>表示创建新文件的默认权限，最高权限为777，当UMASK的值为077，则默认创建的文件为777-077=700，表示创建文件的默认权限为700</p>
+</blockquote>
+</li>
+<li>USERGROUPS_ENAB yes<blockquote>
+<p>如果用户组的成员为空，则在使用的userdel删除用户时，同时删除该用户所属组</p>
+</blockquote>
+</li>
+<li>ENCRYPT_METHOD SHA512<blockquote>
+<p>使用SHA512加密密码  </p>
+</blockquote>
+</li>
+</ul>
+<h1 id="七、-etc-skel文件夹"><a href="#七、-etc-skel文件夹" class="headerlink" title="七、/etc/skel文件夹"></a>七、/etc/skel文件夹</h1><p>当使用useradd命令创建用户时，会从此文件夹下复制全部文件至所创建用户的home目录下，比如可以放置一些系统的说明文件或者环境变量。  </p>
+<h1 id="八、-etc-sudoers文件的使用方法"><a href="#八、-etc-sudoers文件的使用方法" class="headerlink" title="八、/etc/sudoers文件的使用方法"></a>八、/etc/sudoers文件的使用方法</h1><p>此文件可控制哪些账户可使用sudo权限执行某些命令,打开该文件可看见一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">root	ALL=(ALL) 	ALL</div></pre></td></tr></table></figure></p>
+<p>表示只有root用户能使用sudu来执行命令，如果想让一个test用户使用sudo来临时获取root权限，添加如下行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">test	ALL=(ALL) 	ALL</div></pre></td></tr></table></figure></p>
+<p>但是，test在使用sudo来获取root权限执行命令时，是需要输入密码的，如果不需要密码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">test	ALL=(ALL) 	NOPASSW:ALL</div></pre></td></tr></table></figure></p>
+<p>如果想限制test用户在使用sudo临时获取root权限时，只允许执行某些命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">test	ALL=(ALL) 	NOPASSW:/bin/cat</div></pre></td></tr></table></figure></p>
+<p>以上表示test用户在使用sudu临时获取root权限时，不需要输入密码，但只能使用cat命令来查看文件，如果不想让用户执行某些命令，其它命令都可以执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">test	ALL=(ALL) 	NOPASSW:ALL,!/bin/cat</div></pre></td></tr></table></figure></p>
+<p>以上表示test用户在使用sudo临时获取root权限时，不需要输入密码，且所有命令都可以执行，但不能使用cat命令来查看文件。<br>其他一些说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">test    localhost.localdomain=(root)       NOPASSWD:/bin/ls</div></pre></td></tr></table></figure></p>
+<p>具体解释：test用户可以在localhost.localdomain这台主机上无需密码使用sudo命令来获取root权限执行ls命令  </p>
+<h1 id="九、useradd命令详解"><a href="#九、useradd命令详解" class="headerlink" title="九、useradd命令详解"></a>九、useradd命令详解</h1><ul>
+<li><p>名称：useradd - 帐号建立或更新新使用者的资讯</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">useradd [-c comment] [-d home_dir]</div><div class="line">        [-e expire_date] [-f inactive_time]</div><div class="line">        [-g initial_group] [-G group[,...]]</div><div class="line">        [-m [-k skeleton_dir] | -M] [-s shell]</div><div class="line">        [-u uid [ -o]] [-n] [-r] login</div><div class="line"></div><div class="line">useradd -D [-g default_group] [-b default_home]</div><div class="line">        [-f default_inactive] [-e default_expire_date]</div><div class="line">        [-s default_shell]</div></pre></td></tr></table></figure>
+</li>
+<li><p>描述  </p>
+<ul>
+<li><p>新帐号建立<br> 当不加-D参数,useradd指令使用命令列来指定新帐号的设定值and使用系统上的预设值.新使用者帐号将产生一些系统档案，使用者目录建立，拷备起始档案等，这些均可以利用命令列选项指定。此版本为RedHat Linux提供，可帮每个新加入的使用者建立个<br>别的group,毋须添加-n选项。useradd可使用的选项为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    -c comment</div><div class="line">```  </div><div class="line">&gt;新帐号password档的说明栏。</div></pre></td></tr></table></figure>
+<p> -d home_dir</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;新帐号每次登入时所使用的home_dir。预设值为default_home内login名称，并当成登入时目录名称。</div></pre></td></tr></table></figure>
+<p> -e expire_date</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;帐号终止日期。日期的指定格式为MM/DD/YY。</div></pre></td></tr></table></figure>
+<p> -f inactive_days</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;帐号过期几日后永久停权。当值为0时帐号则立刻被停权。而当值为-1时则关闭此功能，预设值为-1.</div></pre></td></tr></table></figure>
+<p> -g initial_group</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;group名称或以数字来做为使用者登入起始群组(group)。群组名须为现有存在的名称。群组数字也须为现有存在的群组。预设的群组数字为1。</div></pre></td></tr></table></figure>
+<p> -G group,[…]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;定义此使用者为此一堆groups的成员。每个群组使用&quot;,&quot;区格开来，不可以夹杂空白字元。群组名同-g选项的限制。定义值为使用者的起始群组。</div></pre></td></tr></table></figure>
+<p> -m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用者目录如不存在则自动建立。如使用-k选项skeleton_dir内的档案将复制至使用者目录下。然而在/etc/skel目录下的档案也会复制过去取代。任何在skeleton_dir or /etc/skel的目录也相同会在使用者目录下一 一建立。The -k同-m不建立目录以及不复制任何档案为预设值。</div></pre></td></tr></table></figure>
+<p> -M</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;不建立使用者目录，即使/etc/login.defs系统档设定要建立使用者目录。</div></pre></td></tr></table></figure>
+<p> -n</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;预设值使用者群组与使用者名称会相同。此选项将取消此预设值。</div></pre></td></tr></table></figure>
+<p> -r</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;此参数是用来建立系统帐号。系统帐号的UID会比定义在系统档上/etc/login.defs.的UID_MIN来的小。注意useradd此用法所建立</div><div class="line"> 的帐号不会建立使用者目录，也不会在乎纪录在/etc/login.defs.的定义值。如果你想要有使用者目录须额外指定-m参数来建立</div><div class="line"> 系统帐号。这是REDHAT额外增设的选项。</div></pre></td></tr></table></figure>
+<p> -s shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用者登入后使用的shell名称。预设为不填写，这样系统会帮你指定预设的登入shell。</div></pre></td></tr></table></figure>
+<p> -u uid</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;使用者的ID值。必须为唯一的ID值，除非用-o选项。数字不可为负值。预设为最小不得小于999而逐次增加。0~999传统上是保留给系统帐号使用。</div><div class="line"></div><div class="line"> * 改变预设值  </div><div class="line">当-D选项出现时，useradd秀出现在的预设值，或是藉由命令列的方式更新预设值。可用选项为∶</div></pre></td></tr></table></figure>
+<p> -b default_home</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;定义使用者所属目录的前一个目录。使用者名称会附加在default_home后面用来建立新使用者的目录。当然使用-d后则此选项无效。</div></pre></td></tr></table></figure>
+<p> -e default_expire_date</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用者帐号停止日期。</div></pre></td></tr></table></figure>
+<p> -f default_inactive</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;帐号过期几日后停权。</div></pre></td></tr></table></figure>
+<p> -g default_group</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;新帐号起始群组名或ID。群组名须为现有存在的名称。群组ID也须为现有存在的群组。</div></pre></td></tr></table></figure>
+<p> -s default_shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   &gt;使用者登入后使用的shell名称。往后新加入的帐号都将使用此shell。如不指定任何参数，useradd显示目前预设的值。  </div><div class="line"></div><div class="line"># 十、passwd命令详解</div><div class="line">* 名称：passwd - 更新用户的身份验证令牌  </div><div class="line">* 语法：</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>passwd [-k] [-l] [-u [-f]] [-d] [-e] [-n mindays] [-x maxdays]<br>      [-w warndays] [-i inactivedays] [-S] [–stdin] [username]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 参数</div></pre></td></tr></table></figure></p>
+<p>  -k<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使即将过期的密码仍保持使用。</div></pre></td></tr></table></figure></p>
+<p>  -l<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;锁住用户无权更改其密码，仅能通过root权限操作。</div></pre></td></tr></table></figure></p>
+<p>  -u<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用-l参数后，再使用此参数解锁，仅能通过root权限操作。</div></pre></td></tr></table></figure></p>
+<p>  -d<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;删除用户密码，仅能通过root权限操作。</div></pre></td></tr></table></figure></p>
+<p>  -e<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;指定密码到期时间，用户在下次登录的时候强制更改密码。</div></pre></td></tr></table></figure></p>
+<p>  -n<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用户在多少天内必须更改密码。</div></pre></td></tr></table></figure></p>
+<p>  -x<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;指定用户密码最长使用期限。</div></pre></td></tr></table></figure></p>
+<p>  -w<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;密码更改警告天数，告诉用户，N天后，密码将过期。</div></pre></td></tr></table></figure></p>
+<p>  -i<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;当用户密码过期后，用户再经过 ‘n‘ 天后没有更改其密码，用户将不能登录</div></pre></td></tr></table></figure></p>
+<p>  -S<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  &gt;显示指定使用者的密码认证种类, 只有具备 root 权限的使用者方可使用。  </div><div class="line"></div><div class="line"># 十一、groupadd命令详解</div><div class="line">* 名称：groupadd - 创建一个用户组  </div><div class="line">* 语法：</div></pre></td></tr></table></figure></p>
+<p>groupadd [options] group<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 参数</div></pre></td></tr></table></figure></p>
+<p>  -f<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;使用此参数时, 即使指定的组已经存在, 命令依然会正常退出(不返回错误), 当和-g一起使用时, 如果指定的GID已经存在, 则会自动使用另一个GID。</div></pre></td></tr></table></figure></p>
+<p>  -g<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;在创建组时，指定GID号。</div></pre></td></tr></table></figure></p>
+<p>  -h<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;限制帮助消息并退出。</div></pre></td></tr></table></figure></p>
+<p>  -K<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;覆盖/etc/login.defs文件中的默认值，可使用多个-K选项。</div></pre></td></tr></table></figure></p>
+<p>  -o<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;新建用户组时，指定一个已经存在的GID。</div></pre></td></tr></table></figure></p>
+<p>  -p<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;新建用户组时，为此用户组设置密码。</div></pre></td></tr></table></figure></p>
+<p>  -r<br>  ```</p>
+<blockquote>
+<p>建立系统用户组，GID低于499。</p>
+</blockquote>
+<h1 id="十二、账户管理的其他相关命令"><a href="#十二、账户管理的其他相关命令" class="headerlink" title="十二、账户管理的其他相关命令"></a>十二、账户管理的其他相关命令</h1><ul>
+<li>userdel——删除帐号，加上-r参数，将连同该帐号的home下的文件一同删除。</li>
+<li>groupdel——删除用户组</li>
+<li>groupmod——修改组的相关信息<blockquote>
+<p>用法：groupmod [-g gid [-o]] [-n group_name] group<br>-g gid 表示指定组的gid，如果使用-o参数，可重复使用gid值<br>-n group_name 表示更改的组名</p>
+</blockquote>
+</li>
+<li>usermod——修改账户相关信息</li>
+<li>chash——用于修改用户登录的shell</li>
+</ul>
+
+                
+<p class="black-link-context">
+    <a href="/2017/02/19/Linux启动顺序/" rel="next" title="Linux启动顺序">
+    上一篇：Linux启动顺序
+  </a>
+</p>
+
+
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2017/02/08/Linux账户管理/" data-title="Linux账户管理" data-url="http://www.nice-jj.com/2017/02/08/Linux账户管理/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'nice-jj'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+        <div class="fixed-action-btn float-sitemap">
+    <a class="btn-floating btn-large green">
+      <i class="fa fa-caret-square-o-up"></i>
+    </a>
+    <ul>
+      <li><a class="btn-return-top btn-floating waves-effect blue" title="回到顶部"><i class="fa fa-arrow-circle-o-up"></i></a></li>
+      <li><a class="btn-floating waves-effect button-collapse orange"  data-activates="main-menu" title="menu"><i class="fa fa-navicon"></i></a></li>
+    </ul>
+  </div>
+
+    </main>
+    <footer class="page-footer black darken-1">
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="social-group col m4 s12">
+                <h5 class="white-text">社交</h5>
+                
+                    <a class="social-link" href="/atom.xml" target="_blank">
+                        <i class="fa fa-2x fa-rss"></i>
+                    </a>
+                
+                <div class="site-visitors-container white-text">
+                    <span>
+                        <i class="fa fa-user"></i>
+                        <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+                    </span>
+                    <span>&nbsp;|&nbsp;</span>
+                    <span>
+                        <i class="fa fa-eye"></i>
+                        <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+                    </span>
+                </div>
+            </div>
+            
+
+            
+            <div class="col m8 s12">
+                <h5 class="white-text">友情链接</h5>
+                
+                    <a class="social-link" href="http://www.0x001.com/" target="_blank">0x001</a>
+                
+                    <a class="social-link" href="http://www.huabuzaiyang.com/" target="_blank">华不再扬</a>
+                
+                    <a class="social-link" href="http://pirogue.org/" target="_blank">pirogue</a>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <div class="footer-copyright black-link-context">
+        <div class="container">
+            © 2017 yd, All rights reserved.
+            <p class="right" style="margin-top: 0;">本博客由 <a href="https://hexo.io">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a></p>
+        </div>
+    </div>
+</footer>
+
+
+    <noscript>
+    <div class="noscript">
+        <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+    </div>
+</noscript>
+<div class="noscript">
+    <p class="center-align">当前网速较慢或者你使用的浏览器不支持博客特定功能，请尝试刷新或换用Chrome、Firefox等现代浏览器</p>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            // 隐藏禁用javascript（针对微信内置浏览器）的提示
+            $('.noscript').hide();
+
+            // 图片缩放效果
+            var $imgs = $('img').not('.slider-image').not('.avatar-image').not('.carousel-image').not('.card-cover-image').not('.qrcode');
+
+            // 给图片加上点击放大效果（materialbox插件）
+            $imgs.addClass('materialboxed').each(function(i, el) {
+                $(this).attr('data-caption', $(this).attr('alt') || ' ');
+            }).materialbox();
+
+            // 优化表格的显示
+            $('table').each(function() {
+                var $table = $(this);
+                // 除去多行代码的情况
+                if ($table.find('pre').length == 0) {
+                    $table.addClass('responsive-table striped bordered');
+                }
+            });
+
+            // 首页幻灯片
+            $('.slider').slider({indicators: true, full_width: true, interval: 8000});
+
+            $(".button-collapse").sideNav();
+            $(".category-menu").sideNav();
+
+            // 针对gallery post
+            $('.carousel').carousel({full_width: true});
+            $('.carousel-control.prev').click(function() {
+                $('.carousel').carousel('prev');
+            });
+            $('.carousel-control.next').click(function() {
+                $('.carousel').carousel('next');
+            });
+
+            // 文章目录
+            $('article').not('.simple-article').find('h1').add('h2').add('h3').add('h4').add('h5').add('h6').scrollSpy();
+
+            // 目录随屏幕滚动（防止目录过长越过footer）
+            var $toc = $('.toc');
+            var scrollTargetTop = 0;
+            $(window).scroll(function() {
+                var $activeLink = $toc.find('a.active.section');
+                if ($(window).scrollTop() < 100) {
+                    scrollTargetTop = 0;
+                } else {
+                    if ($activeLink[0]) {
+                        scrollTargetTop = $activeLink.offset().top - $toc.offset().top;
+                    }
+                }
+                $toc.css('top', '-' + scrollTargetTop + 'px');
+            });
+
+            // 修正文章目录的left-border颜色
+            var color = $('.table-of-contents-text').css('color');
+            $('.table-of-contents-link').css('border-left-color', color);
+
+            // 针对移动端做的优化：FAB按钮点击一下收回
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                $('.fixed-action-btn').addClass('click-to-toggle');
+            }
+            // 回到顶部
+            $('.btn-return-top').click(function() {
+                $('body, html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            // 重置读书页面的Tab标签页的颜色
+            $('li.tab a').hover(function() {
+                $(this).toggleClass('text-lighten-4');
+            });
+            $('.indicator').addClass('green lighten-2');
+
+            
+            // 添加new标签
+            $('.menu-reading, .menu-about').append('<span class="new badge pink"></span>');
+            
+
+            // 搜索功能
+            $('.modal-trigger').leanModal({
+                // 打开搜索框时自动聚焦
+                ready: function() {
+                    if ($('#search').is(":visible")) {
+                        $('#search-input').focus();
+                    }
+                }
+            });
+            var searchXml = "search.xml";
+            if (searchXml.length == 0) {
+             	searchXml = "search.xml";
+            }
+            var searchPath = "/" + searchXml;
+            initSearch(searchPath, 'search-input', 'search-result');
+        });
+
+        // 初始化搜索与匹配函数
+        var initSearch = function(path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function(xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function() {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function() {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function(data) {
+                            var isMatch = true;
+                            var content_index = [];
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title != '' && data_content != '') {
+                                keywords.forEach(function(keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i == 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    data_title = data_title.replace(regS, "<span class=\"search-keyword black lighten-2\">" + keyword + "</span>");
+                                });
+
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start == 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substring(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function(keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<span class=\"search-keyword black lighten-2\">" + keyword + "</span>");
+                                    });
+
+                                    str += "<p class=\"search-result\">..." + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        }
+    })(jQuery);
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-92328398-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=sId=60831581" charset="UTF-8"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+</body>
+</html>
