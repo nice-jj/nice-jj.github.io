@@ -4,64 +4,6 @@
   
     
     <entry>
-      <title><![CDATA[Linux服务启动配置文件的作用和流程]]></title>
-      <url>http://www.nice-jj.com/2017/02/28/Linux%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E6%B5%81%E7%A8%8B/</url>
-      <content type="html"><![CDATA[<h1 id="一、centos6-5最小化安装后自带的服务"><a href="#一、centos6-5最小化安装后自带的服务" class="headerlink" title="一、centos6.5最小化安装后自带的服务"></a>一、centos6.5最小化安装后自带的服务</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">[root@localhost init.d]# ll</div><div class="line">总用量 128</div><div class="line">-rwxr-xr-x. 1 root root  3378 6月  22 2012 auditd</div><div class="line">-rwxr-xr-x. 1 root root  2793 7月  19 2011 crond</div><div class="line">-rw-r--r--. 1 root root 18216 1月   9 2013 functions</div><div class="line">-rwxr-xr-x. 1 root root  5829 1月   9 2013 halt</div><div class="line">-rwxr-xr-x. 1 root root  9515 2月  22 2013 ip6tables</div><div class="line">-rwxr-xr-x. 1 root root  9409 2月  22 2013 iptables</div><div class="line">-rwxr-xr-x. 1 root root   652 1月   9 2013 killall</div><div class="line">-rwxr-xr-x. 1 root root  2200 9月  14 2012 messagebus</div><div class="line">-rwxr-xr-x. 1 root root  2989 1月   9 2013 netconsole</div><div class="line">-rwxr-xr-x. 1 root root  5486 1月   9 2013 netfs</div><div class="line">-rwxr-xr-x. 1 root root  6334 1月   9 2013 network</div><div class="line">-rwxr-xr-x. 1 root root  3852 12月  3 2011 postfix</div><div class="line">-rwxr-xr-x. 1 root root  1559 5月  20 2009 rdisc</div><div class="line">-rwxr-xr-x. 1 root root  1822 2月  22 2013 restorecond</div><div class="line">-rwxr-xr-x. 1 root root  2011 1月  10 2013 rsyslog</div><div class="line">-rwxr-xr-x. 1 root root  1698 2月  22 2013 sandbox</div><div class="line">-rwxr-xr-x. 1 root root  2056 11月 20 2012 saslauthd</div><div class="line">-rwxr-xr-x. 1 root root   647 1月   9 2013 single</div><div class="line">-rwxr-xr-x. 1 root root  4534 2月  22 2013 sshd</div><div class="line">-rwxr-xr-x. 1 root root  2294 2月  22 2013 udev-post</div><div class="line">[root@localhost init.d]# chkconfig --list</div><div class="line">auditd         	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">crond          	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">ip6tables      	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">iptables       	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">messagebus     	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">netconsole     	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">netfs          	0:关闭	1:关闭	2:关闭	3:启用	4:启用	5:启用	6:关闭</div><div class="line">network        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">postfix        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">rdisc          	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">restorecond    	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">rsyslog        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">saslauthd      	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">sshd           	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">udev-post      	0:关闭	1:启用	2:启用	3:启用	4:启用	5:启用	6:关闭</div></pre></td></tr></table></figure>
-<h1 id="二、service命令"><a href="#二、service命令" class="headerlink" title="二、service命令"></a>二、service命令</h1><p>service 命令用于对系统服务进行管理，比如启动（start）、停止（stop）、重启（restart）、重新加载配置（reload）、查看状态（status）等。<br>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">service sshd #显示sshd命令行的用法</div><div class="line">service sshd start #启动sshd</div><div class="line">service sshd stop #停止sshd</div><div class="line">service sshd restart #停止sshd</div><div class="line">service sshd reload #重新加载sshd的配置文件</div><div class="line">service sshd status #查看sshd状态</div></pre></td></tr></table></figure></p>
-<p>如果使用yum或apt-get安装应用，安装好之后会自动在/etc/init.d目录下创建一个shell脚本来管理相应的服务。<br>这样就可以使用/etc/init.d/sshd start或service sshd start来启动sshd服务，其他服务类似。<br>如果是自己编译安装的应用，需要将源码包里的管理脚本加入到/etc/init.d中才可使用以上方法来管理此服务，如果源码包里没有管理脚本，则需要自己写一个进程管理脚本来管理此服务。  </p>
-<h1 id="三、chkconfig命令"><a href="#三、chkconfig命令" class="headerlink" title="三、chkconfig命令"></a>三、chkconfig命令</h1><p>提供了一个维护/etc/rc[0~6] d 文件夹的命令行工具，它减轻了系统直接管理这些文件夹中的符号连接的负担。chkconfig主要包括5个原始功能：为系统管理增加新的服务、为系统管理移除服务、列出单签服务的启动信息、改变服务的启动信息和检查特殊服务的启动状态。<br>必要参数<br>    –add 开启指定的服务程序<br>    –del 关闭指定的服务程序<br>    –list 列出chkconfig所知道的所有服务  </p>
-<p>选择参数<br>    –help 显示帮助信息<br>    –version 显示版本信息<br>    –level&lt;代号&gt; 设置服务程序的等级代号，它是一串0~7的数字，如“-level35”代表指定运行等级3和5  </p>
-<blockquote>
-<p>等级0表示：表示关机<br>等级1表示：单用户模式<br>等级2表示：无网络连接的多用户命令行模式<br>等级3表示：有网络连接的多用户命令行模式<br>等级4表示：不可用<br>等级5表示：带图形界面的多用户模式<br>等级6表示：重新启动  </p>
-</blockquote>
-<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">chkconfig --list #列出所有的系统服务</div><div class="line">chkconfig --add httpd #增加httpd服务</div><div class="line">chkconfig --del httpd #删除httpd服务</div><div class="line">chkconfig --level httpd 2345 on #在运行级别2、3、4、5的情况下都是on（开启）的状态</div><div class="line">chkconfig httpd on #将httpd加入开机启动</div><div class="line">chkconfig httpd off #关闭httpd开机启动</div></pre></td></tr></table></figure></p>
-<p>当使用chkconfig加入开机启动但没有加–level参数指定运行级别，则会根据使用默认级别2、3、4、5。<br>或根据管理脚本的注释来定义运行级别，以sshd为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">#</div><div class="line"># sshd          Start up the OpenSSH server daemon</div><div class="line">#</div><div class="line"># chkconfig: 2345 55 25</div><div class="line"># description: SSH is a protocol for secure remote shell access. \</div><div class="line">#              This service starts up the OpenSSH server daemon.</div><div class="line">#</div><div class="line"># processname: sshd</div><div class="line"># config: /etc/ssh/ssh_host_key</div><div class="line"># config: /etc/ssh/ssh_host_key.pub</div><div class="line"># config: /etc/ssh/ssh_random_seed</div><div class="line"># config: /etc/ssh/sshd_config</div><div class="line"># pidfile: /var/run/sshd.pid</div><div class="line"></div><div class="line">### BEGIN INIT INFO</div><div class="line"># Provides: sshd</div><div class="line"># Required-Start: $local_fs $network $syslog</div><div class="line"># Required-Stop: $local_fs $syslog</div><div class="line"># Should-Start: $syslog</div><div class="line"># Should-Stop: $network $syslog</div><div class="line"># Default-Start: 2 3 4 5</div><div class="line"># Default-Stop: 0 1 6</div><div class="line"># Short-Description: Start up the OpenSSH server daemon</div><div class="line"># Description:       SSH is a protocol for secure remote shell access.</div><div class="line">#                    This service starts up the OpenSSH server daemon.</div><div class="line">### END INIT INFO</div></pre></td></tr></table></figure></p>
-<ul>
-<li>chkconfig: 2345 55 25<blockquote>
-<p>在使用chkconfig加入开机启动项时没有使用level参数，则会根据这一行来定义启动级别和启动顺序，其中2345表示<br>sshd在启动级别为2345的时候启动，55表示sshd开机时的启动优先级，25表示sshd关机时的关闭优先级。</p>
-</blockquote>
-</li>
-<li>processname: sshd<blockquote>
-<p>进程名称</p>
-</blockquote>
-</li>
-<li>config: /etc/ssh/*<blockquote>
-<p>sshd服务的相关配置文件。</p>
-</blockquote>
-</li>
-<li>pidfile: /var/run/sshd.pid<blockquote>
-<p>sshd启动后的PID。</p>
-</blockquote>
-</li>
-<li>### BEGIN INIT INFO 和 ### END INIT INFO里面的内容  <blockquote>
-<p>Default-Start: 2 3 4 5（表示该服务在开机时运行级别为2 3 4 5时启动，与chkconfig是“与”的关系）<br>Default-Stop: 0 1 6（表示该服务在开机时运行级别为0 1 6时不启动，2 3 4 5启动，优先级高于Default-Start）<br>详细介绍：<a href="https://wiki.debian.org/LSBInitScripts" target="_blank" rel="external">https://wiki.debian.org/LSBInitScripts</a>  </p>
-</blockquote>
-</li>
-</ul>
-<h1 id="四、-var-lock-subsys"><a href="#四、-var-lock-subsys" class="headerlink" title="四、/var/lock/subsys/"></a>四、/var/lock/subsys/</h1><p>程序需要判断是否当前已经有一个实例在运行，这个目录就是让程序判断是否有实例运行的标识，保持服务的唯一性。  </p>
-<h1 id="五、-var-run"><a href="#五、-var-run" class="headerlink" title="五、/var/run/"></a>五、/var/run/</h1><p>/var/run 目录中存放的是自系统启动以来描述系统信息的文件。比较常见的用途是daemon进程将自己的pid保存到这个目录。标准要求这个文件夹中的文件必须是在系统启动的时候清空，以便建立新的文件。<br>pid文件的作用：防止进程启动多个副本，保持进程的唯一性。<br>utmp文件：就是用来记录机器的启动时间以及当前登陆用户的,可用who或w命令显示当中的内容。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Linux </category>
-            
-            <category> Linux服务启动配置文件的作用和流程 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 运维 </tag>
-            
-            <tag> Linux </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Linux账户管理]]></title>
       <url>http://www.nice-jj.com/2017/02/28/Linux%E8%B4%A6%E6%88%B7%E7%AE%A1%E7%90%86/</url>
       <content type="html"><![CDATA[<h1 id="一、-etc-passwd文件"><a href="#一、-etc-passwd文件" class="headerlink" title="一、/etc/passwd文件"></a>一、/etc/passwd文件</h1><p>/etc/passwd文件是Linux/UNIX安全的关键文件之一.该文件用于用户登录时校验 用户的口令,当然应当仅对root可写.文件中每行的一般格式为: </p>
@@ -409,6 +351,64 @@
             <category> Linux </category>
             
             <category> Linux账户管理 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux服务启动配置文件的作用和流程]]></title>
+      <url>http://www.nice-jj.com/2017/02/28/Linux%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E6%B5%81%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<h1 id="一、centos6-5最小化安装后自带的服务"><a href="#一、centos6-5最小化安装后自带的服务" class="headerlink" title="一、centos6.5最小化安装后自带的服务"></a>一、centos6.5最小化安装后自带的服务</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">[root@localhost init.d]# ll</div><div class="line">总用量 128</div><div class="line">-rwxr-xr-x. 1 root root  3378 6月  22 2012 auditd</div><div class="line">-rwxr-xr-x. 1 root root  2793 7月  19 2011 crond</div><div class="line">-rw-r--r--. 1 root root 18216 1月   9 2013 functions</div><div class="line">-rwxr-xr-x. 1 root root  5829 1月   9 2013 halt</div><div class="line">-rwxr-xr-x. 1 root root  9515 2月  22 2013 ip6tables</div><div class="line">-rwxr-xr-x. 1 root root  9409 2月  22 2013 iptables</div><div class="line">-rwxr-xr-x. 1 root root   652 1月   9 2013 killall</div><div class="line">-rwxr-xr-x. 1 root root  2200 9月  14 2012 messagebus</div><div class="line">-rwxr-xr-x. 1 root root  2989 1月   9 2013 netconsole</div><div class="line">-rwxr-xr-x. 1 root root  5486 1月   9 2013 netfs</div><div class="line">-rwxr-xr-x. 1 root root  6334 1月   9 2013 network</div><div class="line">-rwxr-xr-x. 1 root root  3852 12月  3 2011 postfix</div><div class="line">-rwxr-xr-x. 1 root root  1559 5月  20 2009 rdisc</div><div class="line">-rwxr-xr-x. 1 root root  1822 2月  22 2013 restorecond</div><div class="line">-rwxr-xr-x. 1 root root  2011 1月  10 2013 rsyslog</div><div class="line">-rwxr-xr-x. 1 root root  1698 2月  22 2013 sandbox</div><div class="line">-rwxr-xr-x. 1 root root  2056 11月 20 2012 saslauthd</div><div class="line">-rwxr-xr-x. 1 root root   647 1月   9 2013 single</div><div class="line">-rwxr-xr-x. 1 root root  4534 2月  22 2013 sshd</div><div class="line">-rwxr-xr-x. 1 root root  2294 2月  22 2013 udev-post</div><div class="line">[root@localhost init.d]# chkconfig --list</div><div class="line">auditd         	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">crond          	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">ip6tables      	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">iptables       	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">messagebus     	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">netconsole     	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">netfs          	0:关闭	1:关闭	2:关闭	3:启用	4:启用	5:启用	6:关闭</div><div class="line">network        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">postfix        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">rdisc          	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">restorecond    	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">rsyslog        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">saslauthd      	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">sshd           	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">udev-post      	0:关闭	1:启用	2:启用	3:启用	4:启用	5:启用	6:关闭</div></pre></td></tr></table></figure>
+<h1 id="二、service命令"><a href="#二、service命令" class="headerlink" title="二、service命令"></a>二、service命令</h1><p>service 命令用于对系统服务进行管理，比如启动（start）、停止（stop）、重启（restart）、重新加载配置（reload）、查看状态（status）等。<br>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">service sshd #显示sshd命令行的用法</div><div class="line">service sshd start #启动sshd</div><div class="line">service sshd stop #停止sshd</div><div class="line">service sshd restart #停止sshd</div><div class="line">service sshd reload #重新加载sshd的配置文件</div><div class="line">service sshd status #查看sshd状态</div></pre></td></tr></table></figure></p>
+<p>如果使用yum或apt-get安装应用，安装好之后会自动在/etc/init.d目录下创建一个shell脚本来管理相应的服务。<br>这样就可以使用/etc/init.d/sshd start或service sshd start来启动sshd服务，其他服务类似。<br>如果是自己编译安装的应用，需要将源码包里的管理脚本加入到/etc/init.d中才可使用以上方法来管理此服务，如果源码包里没有管理脚本，则需要自己写一个进程管理脚本来管理此服务。  </p>
+<h1 id="三、chkconfig命令"><a href="#三、chkconfig命令" class="headerlink" title="三、chkconfig命令"></a>三、chkconfig命令</h1><p>提供了一个维护/etc/rc[0~6] d 文件夹的命令行工具，它减轻了系统直接管理这些文件夹中的符号连接的负担。chkconfig主要包括5个原始功能：为系统管理增加新的服务、为系统管理移除服务、列出单签服务的启动信息、改变服务的启动信息和检查特殊服务的启动状态。<br>必要参数<br>    –add 开启指定的服务程序<br>    –del 关闭指定的服务程序<br>    –list 列出chkconfig所知道的所有服务  </p>
+<p>选择参数<br>    –help 显示帮助信息<br>    –version 显示版本信息<br>    –level&lt;代号&gt; 设置服务程序的等级代号，它是一串0~7的数字，如“-level35”代表指定运行等级3和5  </p>
+<blockquote>
+<p>等级0表示：表示关机<br>等级1表示：单用户模式<br>等级2表示：无网络连接的多用户命令行模式<br>等级3表示：有网络连接的多用户命令行模式<br>等级4表示：不可用<br>等级5表示：带图形界面的多用户模式<br>等级6表示：重新启动  </p>
+</blockquote>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">chkconfig --list #列出所有的系统服务</div><div class="line">chkconfig --add httpd #增加httpd服务</div><div class="line">chkconfig --del httpd #删除httpd服务</div><div class="line">chkconfig --level httpd 2345 on #在运行级别2、3、4、5的情况下都是on（开启）的状态</div><div class="line">chkconfig httpd on #将httpd加入开机启动</div><div class="line">chkconfig httpd off #关闭httpd开机启动</div></pre></td></tr></table></figure></p>
+<p>当使用chkconfig加入开机启动但没有加–level参数指定运行级别，则会根据使用默认级别2、3、4、5。<br>或根据管理脚本的注释来定义运行级别，以sshd为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">#</div><div class="line"># sshd          Start up the OpenSSH server daemon</div><div class="line">#</div><div class="line"># chkconfig: 2345 55 25</div><div class="line"># description: SSH is a protocol for secure remote shell access. \</div><div class="line">#              This service starts up the OpenSSH server daemon.</div><div class="line">#</div><div class="line"># processname: sshd</div><div class="line"># config: /etc/ssh/ssh_host_key</div><div class="line"># config: /etc/ssh/ssh_host_key.pub</div><div class="line"># config: /etc/ssh/ssh_random_seed</div><div class="line"># config: /etc/ssh/sshd_config</div><div class="line"># pidfile: /var/run/sshd.pid</div><div class="line"></div><div class="line">### BEGIN INIT INFO</div><div class="line"># Provides: sshd</div><div class="line"># Required-Start: $local_fs $network $syslog</div><div class="line"># Required-Stop: $local_fs $syslog</div><div class="line"># Should-Start: $syslog</div><div class="line"># Should-Stop: $network $syslog</div><div class="line"># Default-Start: 2 3 4 5</div><div class="line"># Default-Stop: 0 1 6</div><div class="line"># Short-Description: Start up the OpenSSH server daemon</div><div class="line"># Description:       SSH is a protocol for secure remote shell access.</div><div class="line">#                    This service starts up the OpenSSH server daemon.</div><div class="line">### END INIT INFO</div></pre></td></tr></table></figure></p>
+<ul>
+<li>chkconfig: 2345 55 25<blockquote>
+<p>在使用chkconfig加入开机启动项时没有使用level参数，则会根据这一行来定义启动级别和启动顺序，其中2345表示<br>sshd在启动级别为2345的时候启动，55表示sshd开机时的启动优先级，25表示sshd关机时的关闭优先级。</p>
+</blockquote>
+</li>
+<li>processname: sshd<blockquote>
+<p>进程名称</p>
+</blockquote>
+</li>
+<li>config: /etc/ssh/*<blockquote>
+<p>sshd服务的相关配置文件。</p>
+</blockquote>
+</li>
+<li>pidfile: /var/run/sshd.pid<blockquote>
+<p>sshd启动后的PID。</p>
+</blockquote>
+</li>
+<li>### BEGIN INIT INFO 和 ### END INIT INFO里面的内容  <blockquote>
+<p>Default-Start: 2 3 4 5（表示该服务在开机时运行级别为2 3 4 5时启动，与chkconfig是“与”的关系）<br>Default-Stop: 0 1 6（表示该服务在开机时运行级别为0 1 6时不启动，2 3 4 5启动，优先级高于Default-Start）<br>详细介绍：<a href="https://wiki.debian.org/LSBInitScripts" target="_blank" rel="external">https://wiki.debian.org/LSBInitScripts</a>  </p>
+</blockquote>
+</li>
+</ul>
+<h1 id="四、-var-lock-subsys"><a href="#四、-var-lock-subsys" class="headerlink" title="四、/var/lock/subsys/"></a>四、/var/lock/subsys/</h1><p>程序需要判断是否当前已经有一个实例在运行，这个目录就是让程序判断是否有实例运行的标识，保持服务的唯一性。  </p>
+<h1 id="五、-var-run"><a href="#五、-var-run" class="headerlink" title="五、/var/run/"></a>五、/var/run/</h1><p>/var/run 目录中存放的是自系统启动以来描述系统信息的文件。比较常见的用途是daemon进程将自己的pid保存到这个目录。标准要求这个文件夹中的文件必须是在系统启动的时候清空，以便建立新的文件。<br>pid文件的作用：防止进程启动多个副本，保持进程的唯一性。<br>utmp文件：就是用来记录机器的启动时间以及当前登陆用户的,可用who或w命令显示当中的内容。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+            <category> Linux服务启动配置文件的作用和流程 </category>
             
         </categories>
         
