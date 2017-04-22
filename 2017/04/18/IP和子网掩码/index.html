@@ -156,38 +156,6 @@
             
 
             <li class="collapse-level-0" collapse-level="0">
-                <a class="no-padding" href="/categories/Linux/">
-                    Linux <span class="right">3 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/Linux/Linux启动顺序/">
-                    Linux启动顺序 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/Linux/Linux账户管理/">
-                    Linux账户管理 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/Linux/Linux服务启动配置文件的作用和流程/">
-                    Linux服务启动配置文件的作用和流程 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-0" collapse-level="0">
                 <a class="no-padding" href="/categories/计算机网络/">
                     计算机网络 <span class="right">2 篇</span></a>
                 </a>
@@ -206,6 +174,38 @@
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/计算机网络/Windows路由表设置/">
                     Windows路由表设置 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-0" collapse-level="0">
+                <a class="no-padding" href="/categories/Linux/">
+                    Linux <span class="right">3 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Linux/Linux启动顺序/">
+                    Linux启动顺序 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Linux/Linux服务启动配置文件的作用和流程/">
+                    Linux服务启动配置文件的作用和流程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Linux/Linux账户管理/">
+                    Linux账户管理 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -292,7 +292,10 @@
 <p>把255.255.255.192换算为二进制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">11111111.11111111.11111111.11000000</div></pre></td></tr></table></figure></p>
 <p>可看到二进制一共有26个1，所以可以写成192.168.1.0/26来代替</p>
 <h2 id="四、计算出192-168-0-0-22的地址段和子网掩码"><a href="#四、计算出192-168-0-0-22的地址段和子网掩码" class="headerlink" title="四、计算出192.168.0.0/22的地址段和子网掩码"></a>四、计算出192.168.0.0/22的地址段和子网掩码</h2><blockquote>
-<p>“/22”表示子网掩码的二进制为22个1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">11111111.11111111.11111100.00000000</div></pre></td></tr></table></figure></p>
+<p>“/22”表示子网掩码的二进制为22个1：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">11111111.11111111.11111100.00000000</div></pre></td></tr></table></figure>
+<blockquote>
 <p>转为十进制可得出常见的子网掩码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">255.255.252.0</div></pre></td></tr></table></figure></p>
 <p>根据子网掩码的二进制“0”的位数，可计算出IP地址段为2的10次方，也就是1024个IP地址，1024再除以256，可计算出192.168.0.0/22的地址段为192.168.0.0-192.168.3.255</p>
 </blockquote>
