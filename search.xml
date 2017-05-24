@@ -114,6 +114,33 @@
     </entry>
     
     <entry>
+      <title><![CDATA[小型企业安全建设]]></title>
+      <url>http://www.nice-jj.com/2017/05/04/%E5%B0%8F%E5%9E%8B%E4%BC%81%E4%B8%9A%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>一个人在某家装公司做安全，针对目前所在的公司制定的安全建设方案脑图，公司较小，没有SDL和代码审计。参考书籍：互联网企业安全高级指南<br><img src="https://raw.githubusercontent.com/whatblog/whatblog/master/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE.png" alt="安全建设脑图"></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 安全建设 </category>
+            
+            <category> 小型企业安全建设 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 安全建设 </tag>
+            
+            <tag> 小型企业安全 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[IP地址和子网掩码]]></title>
       <url>http://www.nice-jj.com/2017/04/18/IP%E5%92%8C%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/</url>
       <content type="html"><![CDATA[<p>很久没有更新博客了，比较懒！说出来你可能不信，虽然自己是计算机网络专业，但我并不知道子网掩码和IP之间的关系，上周花了点时间简单学习了一下。</p>

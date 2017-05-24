@@ -7,16 +7,13 @@
 
     
 
-    <title>IP地址和子网掩码 | yd</title>
+    <title>小型企业安全建设 | yd</title>
     <meta name="author" content="yd">
-    
-    <meta name="description" content="很久没有更新博客了，比较懒！说出来你可能不信，虽然自己是计算机网络专业，但我并不知道子网掩码和IP之间的关系，上周花了点时间简单学习了一下。
-一、常用的三类IP和默认的子网掩码A类：0.0.0.0-127.255.255.255B类：128.0.0.0-191.255.255.255C类：192.0">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:title" content="IP地址和子网掩码"/>
+    
     <meta property="og:site_name" content="yd Blog"/>
 
     
@@ -266,119 +263,30 @@
 
     <main>
         <div class="container main-container">
-    <nav class="page-nav hide-on-small-only">
+    
+
+<nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper black">
         <span class="breadcrumb">当前位置（分类目录）</span>
         
-            
-    
-    
-    <a class="breadcrumb" href="/categories/计算机网络/">计算机网络</a><a class="breadcrumb" href="/categories/计算机网络/IP地址和子网掩码/">IP地址和子网掩码</a>
-
 
         
-
+            <a class="breadcrumb" href="/categories/安全建设/小型企业安全建设/">小型企业安全建设</a>
         
     </div>
 </nav>
 
-<article>
-    <div class="card">
-        <div class="card-content">
-            
-
-            <div class="article-title">
-                
-    
-        <h1>IP地址和子网掩码</h1>
-    
 
 
-            </div>
-            <time class="black-link-context" datetime="2017-04-17T16:00:00.000Z"><a href="/2017/04/18/IP和子网掩码/">2017-04-18</a></time>
-
-            <span id="busuanzi_container_page_pv" class="read-times-container">
-    <i class="fa fa-eye"></i>
-    <span id="busuanzi_value_page_pv"></span>
-</span>
-
-            
-    <div class="tags-row">
+    <div class="collection mt-0">
         
-            <a href="/tags/计算机网络/" class="chip green accent-4">计算机网络</a>
+            <a href="/2017/05/04/小型企业安全建设/" class="collection-item grey-text text-darken-1">
+                <time datetime="2017-05-03T16:00:00.000Z">2017-05-04</time>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                小型企业安全建设
+            </a>
         
     </div>
-
-
-            <div class="toc black-link-context hide-on-med-and-down">
-    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#一、常用的三类IP和默认的子网掩码"><span class="section table-of-contents-text">一、常用的三类IP和默认的子网掩码</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#二、子网掩码为255-255-255-0可容纳多少台主机"><span class="section table-of-contents-text">二、子网掩码为255.255.255.0可容纳多少台主机</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#三、192-168-1-0-26的“-26”是怎么来的"><span class="section table-of-contents-text">三、192.168.1.0/26的“/26”是怎么来的</span></a></li><li class="section table-of-contents-item section table-of-contents-level-2"><a class="section table-of-contents-link" href="#四、计算出192-168-0-0-22的地址段和子网掩码"><span class="section table-of-contents-text">四、计算出192.168.0.0/22的地址段和子网掩码</span></a></li></ol>
-</div>
-
-
-            <div class="entry black-link-context">
-                <p>很久没有更新博客了，比较懒！说出来你可能不信，虽然自己是计算机网络专业，但我并不知道子网掩码和IP之间的关系，上周花了点时间简单学习了一下。</p>
-<h2 id="一、常用的三类IP和默认的子网掩码"><a href="#一、常用的三类IP和默认的子网掩码" class="headerlink" title="一、常用的三类IP和默认的子网掩码"></a>一、常用的三类IP和默认的子网掩码</h2><p>A类：0.0.0.0-127.255.255.255<br>B类：128.0.0.0-191.255.255.255<br>C类：192.0.0.0-223.255.255.255</p>
-<p>A类默认子网掩码：255.0.0.0<br>B类默认子网掩码：255.255.0.0<br>C类默认子网掩码：255.255.255.0</p>
-<h2 id="二、子网掩码为255-255-255-0可容纳多少台主机"><a href="#二、子网掩码为255-255-255-0可容纳多少台主机" class="headerlink" title="二、子网掩码为255.255.255.0可容纳多少台主机"></a>二、子网掩码为255.255.255.0可容纳多少台主机</h2><p>将255.255.255.0转换为二进制，可使用windows的计算器，也可以使用“除2取余，逆序排列”的方法,每段8位，不够用0补，<br>255.255.255.0的二进制为11111111.11111111.11111111.00000000，再举例：<br>255.255.248.0的二进制为11111111.11111111.11111000.00000000，<br>主机的计算公式为2的m次方，m为0的个数，则：<br>255.255.255.0的主机个数为2的8次方，也就是可容纳256台主机，再减去网络地址和广播地址，所以最后可容纳的主机为254</p>
-<h2 id="三、192-168-1-0-26的“-26”是怎么来的"><a href="#三、192-168-1-0-26的“-26”是怎么来的" class="headerlink" title="三、192.168.1.0/26的“/26”是怎么来的"></a>三、192.168.1.0/26的“/26”是怎么来的</h2><p>192.168.1.0/26的原型为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">192.168.1.0</div><div class="line">255.255.255.192</div></pre></td></tr></table></figure></p>
-<p>把255.255.255.192换算为二进制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">11111111.11111111.11111111.11000000</div></pre></td></tr></table></figure></p>
-<p>可看到二进制一共有26个1，所以可以写成192.168.1.0/26来代替</p>
-<h2 id="四、计算出192-168-0-0-22的地址段和子网掩码"><a href="#四、计算出192-168-0-0-22的地址段和子网掩码" class="headerlink" title="四、计算出192.168.0.0/22的地址段和子网掩码"></a>四、计算出192.168.0.0/22的地址段和子网掩码</h2><p>“/22”表示子网掩码的二进制为22个1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">11111111.11111111.11111100.00000000</div></pre></td></tr></table></figure></p>
-<p>转为十进制可得出常见的子网掩码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">255.255.252.0</div></pre></td></tr></table></figure></p>
-<p>根据子网掩码的二进制“0”的位数，可计算出IP地址段为2的10次方，也就是1024个IP地址，1024再除以256，可计算出192.168.0.0/22的地址段为192.168.0.0-192.168.3.255</p>
-
-                
-<p class="black-link-context">
-    <a href="/2017/05/04/小型企业安全建设/" rel="next" title="小型企业安全建设">
-    上一篇：小型企业安全建设
-  </a>
-</p>
-
-
-
-<p class="black-link-context">
-    <a href="/2017/02/28/Linux服务启动配置文件的作用和流程/" rel="next" title="Linux服务启动配置文件的作用和流程">
-    下一篇：Linux服务启动配置文件的作用和流程
-  </a>
-</p>
-
-
-            </div>
-			
-        </div>
-    </div>
-</article>
-
-
-
-
-    <section id="comment">
-        <div class="card">
-            <div class="card-content">
-                <!-- Duoshuo Comment BEGIN -->
-                <div class="ds-thread" data-thread-key="2017/04/18/IP和子网掩码/" data-title="IP地址和子网掩码" data-url="http://www.nice-jj.com/2017/04/18/IP和子网掩码/"></div>
-
-                <script type="text/javascript">
-                    console.log(document.querySelector('.ds-thread'));
-                    var duoshuoQuery = {
-                        short_name: 'nice-jj'
-                    };
-                    (function() {
-                        var ds = document.createElement('script');
-                        ds.type = 'text/javascript';
-                        ds.async = true;
-                        ds.src = (document.location.protocol == 'https:'
-                            ? 'https:'
-                            : 'http:') + '//static.duoshuo.com/embed.js';
-                        ds.charset = 'UTF-8';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-                    })();
-                </script>
-                <!-- Duoshuo Comment END -->
-            </div>
-        </div>
-    </section>
-
 
 
 </div>
