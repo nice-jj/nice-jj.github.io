@@ -4,6 +4,112 @@
   
     
     <entry>
+      <title><![CDATA[HTTP协议]]></title>
+      <url>http://www.nice-jj.com/2017/05/04/HTTP%E5%8D%8F%E8%AE%AE/</url>
+      <content type="html"><![CDATA[<h1 id="一、HTTP简介"><a href="#一、HTTP简介" class="headerlink" title="一、HTTP简介"></a>一、HTTP简介</h1><p>HTTP（HyperText Transfer Protocol，超文本传输协议）是访问万维网使用的核心通信协议，也是今天所有Web应用程序使用的通信协议。 </p>
+<p>HTTP使用一种基于消息的模型：浏览器作为HTTP客户端通过URL向HTTP服务端即WEB服务器发送所有请求。Web服务器根据接收到的请求后，向客户端发送响应信息。  </p>
+<h1 id="二、HTTP请求"><a href="#二、HTTP请求" class="headerlink" title="二、HTTP请求"></a>二、HTTP请求</h1><p>所有HTTP消息（请求与响应）中都包含一个或几个单行显示的消息头（header），然后是一个强制空白行，最后是消息主体（可选）。</p>
+<p>请求方法：</p>
+<ul>
+<li>GET     请求获取Request-URI所标识的资源</li>
+<li>POST    在Request-URI所标识的资源后附加新的数据</li>
+<li>HEAD    请求获取由Request-URI所标识的资源的响应消息报头</li>
+<li>PUT     请求服务器存储一个资源，并用Request-URI作为其标识</li>
+<li>DELETE  请求服务器删除Request-URI所标识的资源</li>
+<li>TRACE   请求服务器回送收到的请求信息，主要用于测试或诊断</li>
+<li>CONNECT 保留将来使用</li>
+<li>OPTIONS 请求查询服务器的性能，或者查询与资源相关的选项和需求</li>
+</ul>
+<p>常见的HTTP请求如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">GET /leadmail/main/viewletter.asp?nf_id=100290 HTTP/1.1</div><div class="line">Host: www.nice-jj.com</div><div class="line">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0</div><div class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div><div class="line">Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</div><div class="line">Accept-Encoding: gzip, deflate</div><div class="line">Referer: http://www.nice-jj.com/leadmail/main/letterlist_01.asp?nf_listcount=7</div><div class="line">Cookie: ASPSESSIONIDQSTQRRSS=HKCHFBABDLDACAMCAPDHJGJH</div><div class="line">Connection: close</div><div class="line">Upgrade-Insecure-Requests: 1</div></pre></td></tr></table></figure></p>
+<p>每个HTTP请求的第一行都有3个以空格间隔的项目组成。</p>
+<ul>
+<li>一个说明HTTP方法的动词。最常用的方法为GET，它的主要作用是从Web服务器获取一个资源。GET请求没有消息主体，因此在消息头后的空白行中没有其他数据。</li>
+<li>所请求的URL。该URL通常由所请求的资源名称，以及一个包含客户端向该资源提交的参数的可选查询字符串组成。在该URL中，查询字符串以？字符标识，上面的示例有一个名为nf_id、值为100290的参数。</li>
+<li>使用的HTTP版本。因特网上常用的HTTP版本为1.0和1.1，多数浏览器默认使用1.1版本。这两个版本的规范之间存在一些差异；然而，当攻击Web应用程序时，渗透测试中可能遇到的唯一差异是1.1版本必须使用Host请求头。<br>请求示例中的其他一些要点如下：</li>
+<li>Host：用于指定出现在被访问的完整URL中的主机名称。如果几个Web站点以相同的一台服务器为主机，就需要使用Host消息头，因为请求第一行中的URL内通常并不包含主机名称</li>
+<li>User-Agent：提供与浏览器或其他生成请求的客户端软件有关的消息。请注意，由于历史原因，大多数浏览器中都包含Mozilla前缀。这是因为最初占支配地位的Netscape浏览器使用了User-Agent字符串，而其他浏览器也希望让Web站点相信它们与这种标准兼容。与计算领域历史上的许多怪异现象一样，这种现象变得很普遍，即使当前版本的Internet Explorer也保留了这一做法，示例的请求即由Internet Explorer提出。</li>
+<li>Accept：告诉服务器当前客户端可以接收的文档的类型。其实这里包含了<em>/</em>，就表示什么都可以接收。</li>
+<li>Accept-Language：表示当前客户端（浏览器）可以支持的语言</li>
+<li>Accept-Encoding：浏览器发给服务器,声明浏览器支持的编码类型</li>
+<li>Referer：当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器我是从哪个页面链接过来的（可用于CSRF防御）</li>
+<li>Cookie：网站为了辨别用户身份、进行 session 跟踪而储存在用户本地终端上的数据</li>
+</ul>
+<h1 id="三、HTTP响应"><a href="#三、HTTP响应" class="headerlink" title="三、HTTP响应"></a>三、HTTP响应</h1><p>HTTP响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文<br>常见的HTTP响应如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Tue, 23 May 2017 08:01:16 GMT</div><div class="line">Server: IBM_HTTP_Server</div><div class="line">set-Cookie: ASPSESSIONIDQAQBQQQB=BEJCDGKADEDJKLKKAJEOIMMH</div><div class="line">Cache-Control: no-cache</div><div class="line">Pragma: no-cache</div><div class="line">Accept-Ranges: bytes</div><div class="line">Content-Length: 41975</div><div class="line">Content-Type: text/html</div><div class="line">Connection: close</div><div class="line"></div><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta name=&quot;baidu-site-verification&quot; content=&quot;UWbA16hwgi&quot; /&gt;</div><div class="line">&lt;meta name=&quot;baidu-site-verification&quot; content=&quot;JKGFcwzBs5&quot; /&gt;</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>每个HTTP响应的第一行由3个以空格间隔的项目组成</p>
+<ul>
+<li>使用的HTTP版本。</li>
+<li>表示请求结果的数字状态码。200是最常用的状态码，它表示成功提交了请求，正在返回所请求的资源。</li>
+<li>一段文本形式的“原因短语”，进一步说明响应状态。这个短语中可包含任何值，当前浏览器不将其用于任何目的。<br>响应示例中的其他一些要点如下：</li>
+<li>Date：消息发送的时间。</li>
+<li>Server：指明所使用的Web服务器软件。有时还包括其他信息，如所安装的模块和服务器操作系统。但信息并不一定准确。</li>
+<li>set-Cookie: 向浏览器发送另一个Cookie，它将在随后向服务器发送的请求中由Cookie消息头返回。</li>
+<li>Pragma: 指示浏览器不要将响应保存在缓存中。</li>
+<li>Content-Length：规定消息主体的字节长度。</li>
+<li>Content-Type： 用于定义网络文件的类型和网页的编码，决定浏览器将以什么形式、什么编码读取这个文件。</li>
+</ul>
+<h1 id="四、URL"><a href="#四、URL" class="headerlink" title="四、URL"></a>四、URL</h1><p>URL（Uniform Resource Locator,统一资源定位符）是标识Web资源的唯一标识符，通过它即可获取其标识的资源。常用的URL格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protocol://hostname[:port]/[path/]file[?param=value]</div></pre></td></tr></table></figure></p>
+<p>这个结构中有几个部分是可选的。如果端口号与相关协议使用的默认值不同，则只包含端口号即可。</p>
+<h1 id="五、HTTP消息头"><a href="#五、HTTP消息头" class="headerlink" title="五、HTTP消息头"></a>五、HTTP消息头</h1><p>HTTP支持许多不同的消息头，其中一些专用于特殊用途。一些消息头可用在请求与响应中，而其他一些消息头只能专门用在某个特定的消息头中。下面列出一些在渗透测试中攻击Web响应程序时可能遇到的消息头。</p>
+<h2 id="1-常用消息头"><a href="#1-常用消息头" class="headerlink" title="1.常用消息头"></a>1.常用消息头</h2><ul>
+<li>Connection：这个消息头用于告诉通信的另一端，在完成HTTP传输后是关闭TCP连接，还是保持连接开放以接收其他消息。</li>
+<li>Content-Encoding：这个消息头为消息主体中的内容指定编码形式，一些应用程序使用它来压缩响应以加快传输速度。</li>
+<li>Content-Length：这个消息头用于规定消息主体的字节长度。</li>
+<li>Content-Type：用于规定消息主体的内容类型。<h2 id="2-请求消息头"><a href="#2-请求消息头" class="headerlink" title="2.请求消息头"></a>2.请求消息头</h2></li>
+<li>Accept：用于告诉服务器客户端愿意接受哪些内容，如图像类型、办公文档格式等。</li>
+<li>Accept-Enconding：告诉服务器，客户端愿意接受哪些内容编码。</li>
+<li>Authorization：用于为一种内置HTTP身份验证向服务器提交证书。</li>
+<li>Cookie：这个消息头用于向服务器提交它以前发布的cookie。</li>
+<li>Host：用于指定出现在所请求的完整URL中的主机名称。</li>
+<li>If-Modified-Since：用于说明浏览器最后一次收到所请求的资源的时间。如果自那以后资源没有发生变化，服务器就会发出一个带状态码304的响应，指示客户端使用资源的缓存副本。</li>
+<li>If-None-Match：用于指定一个实体标签。实体标签是一个说明消息主体内容的标识符。当最后一次收到所请求的资源时，浏览器提交服务器发布的实体标签。服务器可以使用实体标签确定浏览器是否用于资源的缓存副本。</li>
+<li>Origin：这个消息头用在跨域Ajax请求中，用于指示提出请求的域。</li>
+<li>Referer：用于指示提出当前请求的原始URL。</li>
+<li>User-Agent：这个消息头提供与浏览器或生成请求的其他客户端软件有关的消息。<h2 id="3-响应消息头"><a href="#3-响应消息头" class="headerlink" title="3.响应消息头"></a>3.响应消息头</h2></li>
+<li>Access-Control-Allow-Origin：这个消息头用于指示可否通过跨域Ajax请求获取资源</li>
+<li>Cache-Control：用于向浏览器传送缓存指令</li>
+<li>Etag： 用于指定一个实体标签。客户端可在将来的请求中提交这个标识符，获得和If-None-Match消息头中相同的资源，通知服务器浏览器当前缓存中保存的是哪个版本的资源。</li>
+<li>Expires：用于向浏览器说明消息主体内容的有效时间。在这个时间之前，浏览器可以使用这个资源的缓存副本。</li>
+<li>Pragma：用于向溜阿里纳奇传送缓存指令</li>
+<li>Server：提供所使用的Web服务器软件的相关信息</li>
+<li>Set-Cookie：用于向浏览器发布Cookie，浏览器会在随后的请求中将其返回给服务器。</li>
+<li>WWW-Authenticate：用在带401状态码响应中，提供与服务器所支持的身份验证类型有关的信息。</li>
+<li>X-Frame-Options：指示浏览器框架是否及如何加载当前的响应</li>
+</ul>
+<h1 id="六、Cookie"><a href="#六、Cookie" class="headerlink" title="六、Cookie"></a>六、Cookie</h1><p>Cookie是大多数Web应用程序所依赖的HTTP协议的一个关键组成部分，攻击者通过它来利用Web应用程序中的漏洞。服务器使用Cookie机制向客户端发送数据，客户端保存Cookie并将其返回给服务器。与其他类型的请求参数不同，无需应用程序或用户采取任何特殊措施，随后的每一个请求都会继续向服务器提交Cookie。<br>服务器使用Set-Cookie响应消息头发布Cookie：<br>Set-Cookie：ASPSESSIONIDQAQBQQQB=BEJCDGKADEDJKLKKAJEOIMMH<br>然后，用户的浏览器自动将下面的消息头添加到随后返回给同一服务器的请求中：<br>Cookie：ASPSESSIONIDQAQBQQQB=BEJCDGKADEDJKLKKAJEOIMMH<br>Cookie一般由一个名/值对构成，但也可包含任何不含空格的字符串。可以在服务器响应中使用几个Set-Cookie消息头发布多个Cookie，并可在同一个Cookie消息头中用分号分隔不同的Cookie，将它们全部返回给服务器。<br>除Cookie的实际值外，Set-Cookie消息头还可包含一下任何可选属性，用它们控制浏览器处理的Cookie的方式。</p>
+<ul>
+<li>expires：用于设定Cookie的有效时间。这样会使浏览器将Cookie保存在永久性的存储器中，在随后的浏览器会中重复利用，直到到期时间为止。如果没有设定这个属性，那么Cookie仅用在当前浏览器会话中。</li>
+<li>domain：用于指定Cookie的有效域。这个域必须和收到的Cookie的域相同，或者是它的父域。</li>
+<li>path：用于指定Cookie的有效URL路径。</li>
+<li>secure：如果设置这个属性，则仅在HTTPS请求中提交Cookie。</li>
+<li>HttpOnly：如果设置这个属性，将无法通过客户端JavaScript直接访问Cookie。</li>
+</ul>
+<blockquote>
+<p>参考书籍：黑客攻防技术宝典-Web实战篇</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> Web安全 </category>
+            
+            <category> HTTP协议 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Web </tag>
+            
+            <tag> Web安全 </tag>
+            
+            <tag> HTTP </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[IP地址和子网掩码]]></title>
       <url>http://www.nice-jj.com/2017/04/18/IP%E5%92%8C%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/</url>
       <content type="html"><![CDATA[<p>很久没有更新博客了，比较懒！说出来你可能不信，虽然自己是计算机网络专业，但我并不知道子网掩码和IP之间的关系，上周花了点时间简单学习了一下。</p>
@@ -30,64 +136,6 @@
         <tags>
             
             <tag> 计算机网络 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Linux服务启动配置文件的作用和流程]]></title>
-      <url>http://www.nice-jj.com/2017/02/28/Linux%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E6%B5%81%E7%A8%8B/</url>
-      <content type="html"><![CDATA[<h1 id="一、centos6-5最小化安装后自带的服务"><a href="#一、centos6-5最小化安装后自带的服务" class="headerlink" title="一、centos6.5最小化安装后自带的服务"></a>一、centos6.5最小化安装后自带的服务</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">[root@localhost init.d]# ll</div><div class="line">总用量 128</div><div class="line">-rwxr-xr-x. 1 root root  3378 6月  22 2012 auditd</div><div class="line">-rwxr-xr-x. 1 root root  2793 7月  19 2011 crond</div><div class="line">-rw-r--r--. 1 root root 18216 1月   9 2013 functions</div><div class="line">-rwxr-xr-x. 1 root root  5829 1月   9 2013 halt</div><div class="line">-rwxr-xr-x. 1 root root  9515 2月  22 2013 ip6tables</div><div class="line">-rwxr-xr-x. 1 root root  9409 2月  22 2013 iptables</div><div class="line">-rwxr-xr-x. 1 root root   652 1月   9 2013 killall</div><div class="line">-rwxr-xr-x. 1 root root  2200 9月  14 2012 messagebus</div><div class="line">-rwxr-xr-x. 1 root root  2989 1月   9 2013 netconsole</div><div class="line">-rwxr-xr-x. 1 root root  5486 1月   9 2013 netfs</div><div class="line">-rwxr-xr-x. 1 root root  6334 1月   9 2013 network</div><div class="line">-rwxr-xr-x. 1 root root  3852 12月  3 2011 postfix</div><div class="line">-rwxr-xr-x. 1 root root  1559 5月  20 2009 rdisc</div><div class="line">-rwxr-xr-x. 1 root root  1822 2月  22 2013 restorecond</div><div class="line">-rwxr-xr-x. 1 root root  2011 1月  10 2013 rsyslog</div><div class="line">-rwxr-xr-x. 1 root root  1698 2月  22 2013 sandbox</div><div class="line">-rwxr-xr-x. 1 root root  2056 11月 20 2012 saslauthd</div><div class="line">-rwxr-xr-x. 1 root root   647 1月   9 2013 single</div><div class="line">-rwxr-xr-x. 1 root root  4534 2月  22 2013 sshd</div><div class="line">-rwxr-xr-x. 1 root root  2294 2月  22 2013 udev-post</div><div class="line">[root@localhost init.d]# chkconfig --list</div><div class="line">auditd         	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">crond          	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">ip6tables      	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">iptables       	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">messagebus     	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">netconsole     	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">netfs          	0:关闭	1:关闭	2:关闭	3:启用	4:启用	5:启用	6:关闭</div><div class="line">network        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">postfix        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">rdisc          	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">restorecond    	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">rsyslog        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">saslauthd      	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">sshd           	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">udev-post      	0:关闭	1:启用	2:启用	3:启用	4:启用	5:启用	6:关闭</div></pre></td></tr></table></figure>
-<h1 id="二、service命令"><a href="#二、service命令" class="headerlink" title="二、service命令"></a>二、service命令</h1><p>service 命令用于对系统服务进行管理，比如启动（start）、停止（stop）、重启（restart）、重新加载配置（reload）、查看状态（status）等。<br>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">service sshd #显示sshd命令行的用法</div><div class="line">service sshd start #启动sshd</div><div class="line">service sshd stop #停止sshd</div><div class="line">service sshd restart #停止sshd</div><div class="line">service sshd reload #重新加载sshd的配置文件</div><div class="line">service sshd status #查看sshd状态</div></pre></td></tr></table></figure></p>
-<p>如果使用yum或apt-get安装应用，安装好之后会自动在/etc/init.d目录下创建一个shell脚本来管理相应的服务。<br>这样就可以使用/etc/init.d/sshd start或service sshd start来启动sshd服务，其他服务类似。<br>如果是自己编译安装的应用，需要将源码包里的管理脚本加入到/etc/init.d中才可使用以上方法来管理此服务，如果源码包里没有管理脚本，则需要自己写一个进程管理脚本来管理此服务。  </p>
-<h1 id="三、chkconfig命令"><a href="#三、chkconfig命令" class="headerlink" title="三、chkconfig命令"></a>三、chkconfig命令</h1><p>提供了一个维护/etc/rc[0~6] d 文件夹的命令行工具，它减轻了系统直接管理这些文件夹中的符号连接的负担。chkconfig主要包括5个原始功能：为系统管理增加新的服务、为系统管理移除服务、列出单签服务的启动信息、改变服务的启动信息和检查特殊服务的启动状态。<br>必要参数<br>    –add 开启指定的服务程序<br>    –del 关闭指定的服务程序<br>    –list 列出chkconfig所知道的所有服务  </p>
-<p>选择参数<br>    –help 显示帮助信息<br>    –version 显示版本信息<br>    –level&lt;代号&gt; 设置服务程序的等级代号，它是一串0~7的数字，如“-level35”代表指定运行等级3和5  </p>
-<blockquote>
-<p>等级0表示：表示关机<br>等级1表示：单用户模式<br>等级2表示：无网络连接的多用户命令行模式<br>等级3表示：有网络连接的多用户命令行模式<br>等级4表示：不可用<br>等级5表示：带图形界面的多用户模式<br>等级6表示：重新启动  </p>
-</blockquote>
-<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">chkconfig --list #列出所有的系统服务</div><div class="line">chkconfig --add httpd #增加httpd服务</div><div class="line">chkconfig --del httpd #删除httpd服务</div><div class="line">chkconfig --level httpd 2345 on #在运行级别2、3、4、5的情况下都是on（开启）的状态</div><div class="line">chkconfig httpd on #将httpd加入开机启动</div><div class="line">chkconfig httpd off #关闭httpd开机启动</div></pre></td></tr></table></figure></p>
-<p>当使用chkconfig加入开机启动但没有加–level参数指定运行级别，则会根据使用默认级别2、3、4、5。<br>或根据管理脚本的注释来定义运行级别，以sshd为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">#</div><div class="line"># sshd          Start up the OpenSSH server daemon</div><div class="line">#</div><div class="line"># chkconfig: 2345 55 25</div><div class="line"># description: SSH is a protocol for secure remote shell access. \</div><div class="line">#              This service starts up the OpenSSH server daemon.</div><div class="line">#</div><div class="line"># processname: sshd</div><div class="line"># config: /etc/ssh/ssh_host_key</div><div class="line"># config: /etc/ssh/ssh_host_key.pub</div><div class="line"># config: /etc/ssh/ssh_random_seed</div><div class="line"># config: /etc/ssh/sshd_config</div><div class="line"># pidfile: /var/run/sshd.pid</div><div class="line"></div><div class="line">### BEGIN INIT INFO</div><div class="line"># Provides: sshd</div><div class="line"># Required-Start: $local_fs $network $syslog</div><div class="line"># Required-Stop: $local_fs $syslog</div><div class="line"># Should-Start: $syslog</div><div class="line"># Should-Stop: $network $syslog</div><div class="line"># Default-Start: 2 3 4 5</div><div class="line"># Default-Stop: 0 1 6</div><div class="line"># Short-Description: Start up the OpenSSH server daemon</div><div class="line"># Description:       SSH is a protocol for secure remote shell access.</div><div class="line">#                    This service starts up the OpenSSH server daemon.</div><div class="line">### END INIT INFO</div></pre></td></tr></table></figure></p>
-<ul>
-<li>chkconfig: 2345 55 25<blockquote>
-<p>在使用chkconfig加入开机启动项时没有使用level参数，则会根据这一行来定义启动级别和启动顺序，其中2345表示<br>sshd在启动级别为2345的时候启动，55表示sshd开机时的启动优先级，25表示sshd关机时的关闭优先级。</p>
-</blockquote>
-</li>
-<li>processname: sshd<blockquote>
-<p>进程名称</p>
-</blockquote>
-</li>
-<li>config: /etc/ssh/*<blockquote>
-<p>sshd服务的相关配置文件。</p>
-</blockquote>
-</li>
-<li>pidfile: /var/run/sshd.pid<blockquote>
-<p>sshd启动后的PID。</p>
-</blockquote>
-</li>
-<li>### BEGIN INIT INFO 和 ### END INIT INFO里面的内容  <blockquote>
-<p>Default-Start: 2 3 4 5（表示该服务在开机时运行级别为2 3 4 5时启动，与chkconfig是“与”的关系）<br>Default-Stop: 0 1 6（表示该服务在开机时运行级别为0 1 6时不启动，2 3 4 5启动，优先级高于Default-Start）<br>详细介绍：<a href="https://wiki.debian.org/LSBInitScripts" target="_blank" rel="external">https://wiki.debian.org/LSBInitScripts</a>  </p>
-</blockquote>
-</li>
-</ul>
-<h1 id="四、-var-lock-subsys"><a href="#四、-var-lock-subsys" class="headerlink" title="四、/var/lock/subsys/"></a>四、/var/lock/subsys/</h1><p>程序需要判断是否当前已经有一个实例在运行，这个目录就是让程序判断是否有实例运行的标识，保持服务的唯一性。  </p>
-<h1 id="五、-var-run"><a href="#五、-var-run" class="headerlink" title="五、/var/run/"></a>五、/var/run/</h1><p>/var/run 目录中存放的是自系统启动以来描述系统信息的文件。比较常见的用途是daemon进程将自己的pid保存到这个目录。标准要求这个文件夹中的文件必须是在系统启动的时候清空，以便建立新的文件。<br>pid文件的作用：防止进程启动多个副本，保持进程的唯一性。<br>utmp文件：就是用来记录机器的启动时间以及当前登陆用户的,可用who或w命令显示当中的内容。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> Linux </category>
-            
-            <category> Linux服务启动配置文件的作用和流程 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 运维 </tag>
-            
-            <tag> Linux </tag>
             
         </tags>
         
@@ -441,6 +489,64 @@
             <category> Linux </category>
             
             <category> Linux账户管理 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux服务启动配置文件的作用和流程]]></title>
+      <url>http://www.nice-jj.com/2017/02/28/Linux%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E6%B5%81%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<h1 id="一、centos6-5最小化安装后自带的服务"><a href="#一、centos6-5最小化安装后自带的服务" class="headerlink" title="一、centos6.5最小化安装后自带的服务"></a>一、centos6.5最小化安装后自带的服务</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">[root@localhost init.d]# ll</div><div class="line">总用量 128</div><div class="line">-rwxr-xr-x. 1 root root  3378 6月  22 2012 auditd</div><div class="line">-rwxr-xr-x. 1 root root  2793 7月  19 2011 crond</div><div class="line">-rw-r--r--. 1 root root 18216 1月   9 2013 functions</div><div class="line">-rwxr-xr-x. 1 root root  5829 1月   9 2013 halt</div><div class="line">-rwxr-xr-x. 1 root root  9515 2月  22 2013 ip6tables</div><div class="line">-rwxr-xr-x. 1 root root  9409 2月  22 2013 iptables</div><div class="line">-rwxr-xr-x. 1 root root   652 1月   9 2013 killall</div><div class="line">-rwxr-xr-x. 1 root root  2200 9月  14 2012 messagebus</div><div class="line">-rwxr-xr-x. 1 root root  2989 1月   9 2013 netconsole</div><div class="line">-rwxr-xr-x. 1 root root  5486 1月   9 2013 netfs</div><div class="line">-rwxr-xr-x. 1 root root  6334 1月   9 2013 network</div><div class="line">-rwxr-xr-x. 1 root root  3852 12月  3 2011 postfix</div><div class="line">-rwxr-xr-x. 1 root root  1559 5月  20 2009 rdisc</div><div class="line">-rwxr-xr-x. 1 root root  1822 2月  22 2013 restorecond</div><div class="line">-rwxr-xr-x. 1 root root  2011 1月  10 2013 rsyslog</div><div class="line">-rwxr-xr-x. 1 root root  1698 2月  22 2013 sandbox</div><div class="line">-rwxr-xr-x. 1 root root  2056 11月 20 2012 saslauthd</div><div class="line">-rwxr-xr-x. 1 root root   647 1月   9 2013 single</div><div class="line">-rwxr-xr-x. 1 root root  4534 2月  22 2013 sshd</div><div class="line">-rwxr-xr-x. 1 root root  2294 2月  22 2013 udev-post</div><div class="line">[root@localhost init.d]# chkconfig --list</div><div class="line">auditd         	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">crond          	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">ip6tables      	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">iptables       	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">messagebus     	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">netconsole     	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">netfs          	0:关闭	1:关闭	2:关闭	3:启用	4:启用	5:启用	6:关闭</div><div class="line">network        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">postfix        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">rdisc          	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">restorecond    	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">rsyslog        	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">saslauthd      	0:关闭	1:关闭	2:关闭	3:关闭	4:关闭	5:关闭	6:关闭</div><div class="line">sshd           	0:关闭	1:关闭	2:启用	3:启用	4:启用	5:启用	6:关闭</div><div class="line">udev-post      	0:关闭	1:启用	2:启用	3:启用	4:启用	5:启用	6:关闭</div></pre></td></tr></table></figure>
+<h1 id="二、service命令"><a href="#二、service命令" class="headerlink" title="二、service命令"></a>二、service命令</h1><p>service 命令用于对系统服务进行管理，比如启动（start）、停止（stop）、重启（restart）、重新加载配置（reload）、查看状态（status）等。<br>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">service sshd #显示sshd命令行的用法</div><div class="line">service sshd start #启动sshd</div><div class="line">service sshd stop #停止sshd</div><div class="line">service sshd restart #停止sshd</div><div class="line">service sshd reload #重新加载sshd的配置文件</div><div class="line">service sshd status #查看sshd状态</div></pre></td></tr></table></figure></p>
+<p>如果使用yum或apt-get安装应用，安装好之后会自动在/etc/init.d目录下创建一个shell脚本来管理相应的服务。<br>这样就可以使用/etc/init.d/sshd start或service sshd start来启动sshd服务，其他服务类似。<br>如果是自己编译安装的应用，需要将源码包里的管理脚本加入到/etc/init.d中才可使用以上方法来管理此服务，如果源码包里没有管理脚本，则需要自己写一个进程管理脚本来管理此服务。  </p>
+<h1 id="三、chkconfig命令"><a href="#三、chkconfig命令" class="headerlink" title="三、chkconfig命令"></a>三、chkconfig命令</h1><p>提供了一个维护/etc/rc[0~6] d 文件夹的命令行工具，它减轻了系统直接管理这些文件夹中的符号连接的负担。chkconfig主要包括5个原始功能：为系统管理增加新的服务、为系统管理移除服务、列出单签服务的启动信息、改变服务的启动信息和检查特殊服务的启动状态。<br>必要参数<br>    –add 开启指定的服务程序<br>    –del 关闭指定的服务程序<br>    –list 列出chkconfig所知道的所有服务  </p>
+<p>选择参数<br>    –help 显示帮助信息<br>    –version 显示版本信息<br>    –level&lt;代号&gt; 设置服务程序的等级代号，它是一串0~7的数字，如“-level35”代表指定运行等级3和5  </p>
+<blockquote>
+<p>等级0表示：表示关机<br>等级1表示：单用户模式<br>等级2表示：无网络连接的多用户命令行模式<br>等级3表示：有网络连接的多用户命令行模式<br>等级4表示：不可用<br>等级5表示：带图形界面的多用户模式<br>等级6表示：重新启动  </p>
+</blockquote>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">chkconfig --list #列出所有的系统服务</div><div class="line">chkconfig --add httpd #增加httpd服务</div><div class="line">chkconfig --del httpd #删除httpd服务</div><div class="line">chkconfig --level httpd 2345 on #在运行级别2、3、4、5的情况下都是on（开启）的状态</div><div class="line">chkconfig httpd on #将httpd加入开机启动</div><div class="line">chkconfig httpd off #关闭httpd开机启动</div></pre></td></tr></table></figure></p>
+<p>当使用chkconfig加入开机启动但没有加–level参数指定运行级别，则会根据使用默认级别2、3、4、5。<br>或根据管理脚本的注释来定义运行级别，以sshd为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">#</div><div class="line"># sshd          Start up the OpenSSH server daemon</div><div class="line">#</div><div class="line"># chkconfig: 2345 55 25</div><div class="line"># description: SSH is a protocol for secure remote shell access. \</div><div class="line">#              This service starts up the OpenSSH server daemon.</div><div class="line">#</div><div class="line"># processname: sshd</div><div class="line"># config: /etc/ssh/ssh_host_key</div><div class="line"># config: /etc/ssh/ssh_host_key.pub</div><div class="line"># config: /etc/ssh/ssh_random_seed</div><div class="line"># config: /etc/ssh/sshd_config</div><div class="line"># pidfile: /var/run/sshd.pid</div><div class="line"></div><div class="line">### BEGIN INIT INFO</div><div class="line"># Provides: sshd</div><div class="line"># Required-Start: $local_fs $network $syslog</div><div class="line"># Required-Stop: $local_fs $syslog</div><div class="line"># Should-Start: $syslog</div><div class="line"># Should-Stop: $network $syslog</div><div class="line"># Default-Start: 2 3 4 5</div><div class="line"># Default-Stop: 0 1 6</div><div class="line"># Short-Description: Start up the OpenSSH server daemon</div><div class="line"># Description:       SSH is a protocol for secure remote shell access.</div><div class="line">#                    This service starts up the OpenSSH server daemon.</div><div class="line">### END INIT INFO</div></pre></td></tr></table></figure></p>
+<ul>
+<li>chkconfig: 2345 55 25<blockquote>
+<p>在使用chkconfig加入开机启动项时没有使用level参数，则会根据这一行来定义启动级别和启动顺序，其中2345表示<br>sshd在启动级别为2345的时候启动，55表示sshd开机时的启动优先级，25表示sshd关机时的关闭优先级。</p>
+</blockquote>
+</li>
+<li>processname: sshd<blockquote>
+<p>进程名称</p>
+</blockquote>
+</li>
+<li>config: /etc/ssh/*<blockquote>
+<p>sshd服务的相关配置文件。</p>
+</blockquote>
+</li>
+<li>pidfile: /var/run/sshd.pid<blockquote>
+<p>sshd启动后的PID。</p>
+</blockquote>
+</li>
+<li>### BEGIN INIT INFO 和 ### END INIT INFO里面的内容  <blockquote>
+<p>Default-Start: 2 3 4 5（表示该服务在开机时运行级别为2 3 4 5时启动，与chkconfig是“与”的关系）<br>Default-Stop: 0 1 6（表示该服务在开机时运行级别为0 1 6时不启动，2 3 4 5启动，优先级高于Default-Start）<br>详细介绍：<a href="https://wiki.debian.org/LSBInitScripts" target="_blank" rel="external">https://wiki.debian.org/LSBInitScripts</a>  </p>
+</blockquote>
+</li>
+</ul>
+<h1 id="四、-var-lock-subsys"><a href="#四、-var-lock-subsys" class="headerlink" title="四、/var/lock/subsys/"></a>四、/var/lock/subsys/</h1><p>程序需要判断是否当前已经有一个实例在运行，这个目录就是让程序判断是否有实例运行的标识，保持服务的唯一性。  </p>
+<h1 id="五、-var-run"><a href="#五、-var-run" class="headerlink" title="五、/var/run/"></a>五、/var/run/</h1><p>/var/run 目录中存放的是自系统启动以来描述系统信息的文件。比较常见的用途是daemon进程将自己的pid保存到这个目录。标准要求这个文件夹中的文件必须是在系统启动的时候清空，以便建立新的文件。<br>pid文件的作用：防止进程启动多个副本，保持进程的唯一性。<br>utmp文件：就是用来记录机器的启动时间以及当前登陆用户的,可用who或w命令显示当中的内容。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux </category>
+            
+            <category> Linux服务启动配置文件的作用和流程 </category>
             
         </categories>
         
