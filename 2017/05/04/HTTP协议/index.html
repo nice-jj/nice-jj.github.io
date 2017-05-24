@@ -204,14 +204,6 @@ HTTP使用一种基于消息的模型：浏览器作为HTTP客户端通过URL向
         
 
             <li class="collapse-level-1" collapse-level="1">
-                <a class="no-padding" href="/categories/Linux/Linux账户管理/">
-                    Linux账户管理 <span class="right">1 篇</span></a>
-                </a>
-            </li>
-
-        
-
-            <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/Linux/Linux启动顺序/">
                     Linux启动顺序 <span class="right">1 篇</span></a>
                 </a>
@@ -222,6 +214,14 @@ HTTP使用一种基于消息的模型：浏览器作为HTTP客户端通过URL向
             <li class="collapse-level-1" collapse-level="1">
                 <a class="no-padding" href="/categories/Linux/Linux服务启动配置文件的作用和流程/">
                     Linux服务启动配置文件的作用和流程 <span class="right">1 篇</span></a>
+                </a>
+            </li>
+
+        
+
+            <li class="collapse-level-1" collapse-level="1">
+                <a class="no-padding" href="/categories/Linux/Linux账户管理/">
+                    Linux账户管理 <span class="right">1 篇</span></a>
                 </a>
             </li>
 
@@ -352,7 +352,9 @@ HTTP使用一种基于消息的模型：浏览器作为HTTP客户端通过URL向
 <li>Connection：这个消息头用于告诉通信的另一端，在完成HTTP传输后是关闭TCP连接，还是保持连接开放以接收其他消息。</li>
 <li>Content-Encoding：这个消息头为消息主体中的内容指定编码形式，一些应用程序使用它来压缩响应以加快传输速度。</li>
 <li>Content-Length：这个消息头用于规定消息主体的字节长度。</li>
-<li>Content-Type：用于规定消息主体的内容类型。<h2 id="2-请求消息头"><a href="#2-请求消息头" class="headerlink" title="2.请求消息头"></a>2.请求消息头</h2></li>
+<li>Content-Type：用于规定消息主体的内容类型。</li>
+</ul>
+<h2 id="2-请求消息头"><a href="#2-请求消息头" class="headerlink" title="2.请求消息头"></a>2.请求消息头</h2><ul>
 <li>Accept：用于告诉服务器客户端愿意接受哪些内容，如图像类型、办公文档格式等。</li>
 <li>Accept-Enconding：告诉服务器，客户端愿意接受哪些内容编码。</li>
 <li>Authorization：用于为一种内置HTTP身份验证向服务器提交证书。</li>
@@ -362,7 +364,9 @@ HTTP使用一种基于消息的模型：浏览器作为HTTP客户端通过URL向
 <li>If-None-Match：用于指定一个实体标签。实体标签是一个说明消息主体内容的标识符。当最后一次收到所请求的资源时，浏览器提交服务器发布的实体标签。服务器可以使用实体标签确定浏览器是否用于资源的缓存副本。</li>
 <li>Origin：这个消息头用在跨域Ajax请求中，用于指示提出请求的域。</li>
 <li>Referer：用于指示提出当前请求的原始URL。</li>
-<li>User-Agent：这个消息头提供与浏览器或生成请求的其他客户端软件有关的消息。<h2 id="3-响应消息头"><a href="#3-响应消息头" class="headerlink" title="3.响应消息头"></a>3.响应消息头</h2></li>
+<li>User-Agent：这个消息头提供与浏览器或生成请求的其他客户端软件有关的消息。</li>
+</ul>
+<h2 id="3-响应消息头"><a href="#3-响应消息头" class="headerlink" title="3.响应消息头"></a>3.响应消息头</h2><ul>
 <li>Access-Control-Allow-Origin：这个消息头用于指示可否通过跨域Ajax请求获取资源</li>
 <li>Cache-Control：用于向浏览器传送缓存指令</li>
 <li>Etag： 用于指定一个实体标签。客户端可在将来的请求中提交这个标识符，获得和If-None-Match消息头中相同的资源，通知服务器浏览器当前缓存中保存的是哪个版本的资源。</li>
