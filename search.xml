@@ -18,8 +18,10 @@
 <li><p>除home目录以外，其他新建文件或目录的默认权限以umask的值为准，如果umask的值为077，那么新建的文件的默认权限为700。使用umask命令可查看umask的值：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[test@localhost ~]$ umask</div><div class="line">0002</div></pre></td></tr></table></figure>
 </li>
+<li><p>使用umask命令更改权限的默认值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[test@localhost ~]$ umask</div><div class="line">0002</div><div class="line">[test@localhost ~]$ umask 777</div><div class="line">[test@localhost ~]$ umask</div><div class="line">0777</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>使用umask命令更改权限的默认值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[test@localhost ~]$ umask</div><div class="line">0002</div><div class="line">[test@localhost ~]$ umask 777</div><div class="line">[test@localhost ~]$ umask</div><div class="line">0777</div></pre></td></tr></table></figure></p>
 <h1 id="三、其他特殊权限"><a href="#三、其他特殊权限" class="headerlink" title="三、其他特殊权限"></a>三、其他特殊权限</h1><p>除了r、w、x权限之外，还有其他三种特殊的权限，分别为：SUID（s、S、4）、SGID（s、S、2）、SBIT（t、T、1）</p>
 <ul>
 <li>SUID<br>此权限设置在文件所有者的x权限上，只对二进制文件有效，执行者拥有文件所有者的权限。如果为小写的s，表示在设置s权限前，该文件所有者有x权限；如果为大写的S，表示在设置S权限前，该文件所有者没有x权限。</li>
@@ -59,7 +61,10 @@
 <li>lsattr用来查看文件的隐藏属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# lsattr</div><div class="line">-------------e- ./install.log.syslog</div><div class="line">-------------e- ./anaconda-ks.cfg</div><div class="line">-------------e- ./install.log</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>e是ext3，ext4文件系统自带的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-R #递归地列出目录以及其下内容的属性</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>e是ext3，ext4文件系统自带的</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-R #递归地列出目录以及其下内容的属性</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-V #显示程序版本</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-a #列出目录中的所有文件,包括以`.&apos;开头的文件的属性和隐藏的文件</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-d #以列出其它文件的方式那样列出目录的属性, 而不列出其下的内容</div></pre></td></tr></table></figure>
@@ -68,12 +73,11 @@
 </ul>
 <p>操作符：</p>
 <blockquote>
-<p>操作符`+’用来在文件已有属性的基础上增加选定的属性; `-‘用来去掉文件上的选定的属性;而`=’用来指定该文件的唯一属性</p>
+<p>操作符’+’用来在文件已有属性的基础上增加选定的属性;<br>‘-‘用来去掉文件上的选定的属性;而’=’用来指定该文件的唯一属性</p>
 </blockquote>
 <p>属性：</p>
 <blockquote>
-<p>‘A’属性的文件时,它的atime记录不会改变. 这可以在笔记本电脑系统中避免某些磁盘I/O处理<br><code>a&#39;属性的文件只能在添加模式下打开用于写入. 只有超级用户可以设置或清除该属性</code>c’属性的文件在磁盘上由内核自动进行压缩处理. 从该文件读取时返回的是未压缩的数据. 对该文件的一次写入会在保存它们到磁盘之前进行数据压缩<br><code>d&#39;属性的文件不能对其运行 dump(8) 程序进行备份</code>i’属性的文件不能进行修改:你既不能删除它, 也不能给它重新命名,你不能对该文件创建链接, 而且也不能对该文件写入任何数据. 只有超级用户可以设置或清除该属性<br><code>s&#39;属性的文件时,将对其数据块清零 并写回到磁盘上
-&#39;S&#39;属性的文件时, 修改会同步写入到磁盘上;这与应用到文件子系统上的&#39;sync&#39;挂载选项有相同的效果</code>u’属性的文件时, 将会保存其内容. 这使得用户可以请求恢复被删除的文件</p>
+<p>‘A’属性的文件时，它的atime记录不会改变。这可以在笔记本电脑系统中避免某些磁盘I/O处理<br>‘a’属性的文件只能在添加模式下打开用于写入。只有超级用户可以设置或清除该属性<br>‘c’属性的文件在磁盘上由内核自动进行压缩处理。从该文件读取时返回的是未压缩的数据. 对该文件的一次写入会在保存它们到磁盘之前进行数据压缩<br>‘d’属性的文件不能对其运行 dump(8) 程序进行备份<br>‘i’属性的文件不能进行修改:你既不能删除它。也不能给它重新命名，你不能对该文件创建链接，而且也不能对该文件写入任何数据。只有超级用户可以设置或清除该属性<br>‘s’属性的文件时，将对其数据块清零并写回到磁盘上<br>‘S’属性的文件时，修改会同步写入到磁盘上；这与应用到文件子系统上的’sync’挂载选项有相同的效果<br>`u’属性的文件时，将会保存其内容。这使得用户可以请求恢复被删除的文件</p>
 </blockquote>
 ]]></content>
       
@@ -88,9 +92,9 @@
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 安全 </tag>
             
@@ -318,9 +322,9 @@
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
         
@@ -680,9 +684,9 @@
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
         
@@ -793,9 +797,9 @@
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
         
