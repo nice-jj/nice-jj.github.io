@@ -4,6 +4,33 @@
 
     
   <url>
+    <loc>http://www.nice-jj.com/2017/05/25/Linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%9A%84%E6%9D%83%E9%99%90%E3%80%81ACL%E6%8E%A7%E5%88%B6/</loc>
+    <lastmod>2017-05-25T07:27:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>Linux文件和目录的权限、ACL控制</title>
+        <pubTime>2017-05-24T16:00:00.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>运维</tag>
+         
+        <tag>安全</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.nice-jj.com/categories/Linux/"/>
+          
+             
+              <breadCrumb title="Linux文件和目录的权限、ACL控制" url="http://www.nice-jj.com/categories/Linux/Linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%9A%84%E6%9D%83%E9%99%90%E3%80%81ACL%E6%8E%A7%E5%88%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.nice-jj.com/2017/05/24/%E5%B0%8F%E5%9E%8B%E4%BC%81%E4%B8%9A%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/</loc>
     <lastmod>2017-05-24T14:26:21.403Z</lastmod>
     <data>
@@ -109,9 +136,9 @@
         <title>Linux服务启动配置文件的作用和流程</title>
         <pubTime>2017-02-27T16:00:00.000Z</pubTime>
         
-        <tag>运维</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>运维</tag>
          
          
            
@@ -134,9 +161,9 @@
         <title>Linux启动顺序</title>
         <pubTime>2017-02-18T16:00:00.000Z</pubTime>
         
-        <tag>运维</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>运维</tag>
          
          
            
@@ -159,9 +186,9 @@
         <title>Linux账户管理</title>
         <pubTime>2017-02-27T16:00:00.000Z</pubTime>
         
-        <tag>运维</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>运维</tag>
          
          
            

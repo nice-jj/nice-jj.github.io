@@ -7,13 +7,17 @@
 
     
 
-    <title>计算机网络 | yd</title>
+    <title>Linux文件和目录的权限、ACL控制 | yd</title>
     <meta name="author" content="yd">
+    
+    <meta name="description" content="Linux中的权限分为3种，分别是读（read）、写（write）和执行（execute），在系统中分别记作：r、w和x，或者用数字表示为4、2和1  
+
+一、查看文件权限可以使用ls -al来查看文件的详细信息，如下所示：1234567891011121314151617[root@localho">
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
+    <meta property="og:title" content="Linux文件和目录的权限、ACL控制"/>
     <meta property="og:site_name" content="yd Blog"/>
 
     
@@ -271,36 +275,130 @@
 
     <main>
         <div class="container main-container">
-    
-
-<nav class="page-nav hide-on-small-only">
+    <nav class="page-nav hide-on-small-only">
     <div class="nav-wrapper black">
-        <span class="breadcrumb">当前位置（标签）</span>
+        <span class="breadcrumb">当前位置（分类目录）</span>
         
+            
+    
+    
+    <a class="breadcrumb" href="/categories/Linux/">Linux</a><a class="breadcrumb" href="/categories/Linux/Linux文件和目录的权限、ACL控制/">Linux文件和目录的权限、ACL控制</a>
+
 
         
-            <a class="breadcrumb" href="/tags/计算机网络/">计算机网络</a>
+
         
     </div>
 </nav>
 
+<article>
+    <div class="card">
+        <div class="card-content">
+            
+
+            <div class="article-title">
+                
+    
+        <h1>Linux文件和目录的权限、ACL控制</h1>
+    
 
 
-    <div class="collection mt-0">
+            </div>
+            <time class="black-link-context" datetime="2017-05-24T16:00:00.000Z"><a href="/2017/05/25/Linux文件和目录的权限、ACL控制/">2017-05-25</a></time>
+
+            <span id="busuanzi_container_page_pv" class="read-times-container">
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_value_page_pv"></span>
+</span>
+
+            
+    <div class="tags-row">
         
-            <a href="/2017/04/18/IP和子网掩码/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-04-17T16:00:00.000Z">2017-04-18</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                IP地址和子网掩码
-            </a>
+            <a href="/tags/Linux/" class="chip green accent-4">Linux</a>
         
-            <a href="/2017/02/23/Windows路由表设置/" class="collection-item grey-text text-darken-1">
-                <time datetime="2017-02-22T16:00:00.000Z">2017-02-23</time>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                Windows路由表设置
-            </a>
+            <a href="/tags/运维/" class="chip green accent-4">运维</a>
+        
+            <a href="/tags/安全/" class="chip green accent-4">安全</a>
         
     </div>
+
+
+            <div class="toc black-link-context hide-on-med-and-down">
+    <ol class="section table-of-contents"><li class="section table-of-contents-item section table-of-contents-level-1"><a class="section table-of-contents-link" href="#一、查看文件权限"><span class="section table-of-contents-text">一、查看文件权限</span></a></li></ol>
+</div>
+
+
+            <div class="entry black-link-context">
+                <blockquote>
+<p>Linux中的权限分为3种，分别是读（read）、写（write）和执行（execute），在系统中分别记作：r、w和x，或者用数字表示为4、2和1  </p>
+</blockquote>
+<h1 id="一、查看文件权限"><a href="#一、查看文件权限" class="headerlink" title="一、查看文件权限"></a>一、查看文件权限</h1><p>可以使用ls -al来查看文件的详细信息，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# ls -al /etc/passwd</div><div class="line">-rw-r--r--. 1 root root 904 2月  10 10:04 /etc/passwd</div><div class="line">```  </div><div class="line">第1个字符用来区分是目录还是文件，具体解释：  </div><div class="line">d：表示一个目录  </div><div class="line">-：表示一个文件  </div><div class="line">l：表示一个软连接  </div><div class="line">b、c：分别表示区块设备和其他的外围设备，是特殊类型的文件</div><div class="line">s、p：表示系统的数据结构和管道，通常很少见到  </div><div class="line">第2~10个字符表示该文件的权限，每三个为一组，前三个表示文件所有者权限，中间三个表示文件所有者所在组的其他用户权限，最后三个表示其他用户权限：  </div><div class="line">r：读的权限，也可以用数字4表示</div><div class="line">w：写的权限，也可以用数字2表示</div><div class="line">x：执行的权限，也可以用数字1表示</div><div class="line">以上/etc/passwd文件的权限为-rw-r--r--，表示文件所有者具有读、写权限，文件所有者所在组的其他用户具有读的权限，其他用户具有读的权限。  </div><div class="line"></div><div class="line"># 二、新建文件或目录的默认权限</div><div class="line">* 每个用户的home目录的权限默认为:</div></pre></td></tr></table></figure></p>
+<p>[test@localhost home]$ ll<br>总用量 4<br>drwx——. 4 test test 4096 2月  16 11:41 test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 除home目录以外，其他新建文件或目录的默认权限以umask的值为准，如果umask的值为077，那么新建的文件的默认权限为700。使用umask命令可查看umask的值：</div></pre></td></tr></table></figure></p>
+<p>[test@localhost ~]$ umask<br>0002<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">使用umask命令更改权限的默认值：</div></pre></td></tr></table></figure></p>
+<p>[test@localhost ~]$ umask<br>0002<br>[test@localhost ~]$ umask 777<br>[test@localhost ~]$ umask<br>0777<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 三、其他特殊权限</div><div class="line">除了r、w、x权限之外，还有其他三种特殊的权限，分别为：SUID（s、S、4）、SGID（s、S、2）、SBIT（t、T、1）  </div><div class="line">* SUID  </div><div class="line">此权限设置在文件所有者的x权限上，只对二进制文件有效，执行者拥有文件所有者的权限。如果为小写的s，表示在设置s权限前，该文件所有者有x权限；如果为大写的S，表示在设置S权限前，该文件所有者没有x权限。  </div><div class="line">* SGID</div><div class="line">此权限设置在文件所属组的x权限上，执行者拥有文件所属组的权限。如果为小写的s，表示在设置s权限前，该文件所属组有x权限；如果为大写的S，表示在设置S权限前，该文件所属组没有x权限。</div><div class="line">* SBIT</div><div class="line">此权限设置在文件其他用户的x权限上，当设置了t权限后，只有root或者文件所有者才能删除此文件。如果为小写的t，表示在设置t权限前，其他用户有x权限；如果为大写的T，表示在设置T权限前，其他用户没有x权限。  </div><div class="line"></div><div class="line"># 四、chmod命令详解</div><div class="line">此命令用来改变文件或目录的权限  </div><div class="line">* 用法：</div></pre></td></tr></table></figure></p>
+<p>chmod [OPTION]… MODE[,MODE]… FILE…<br>chmod [OPTION]… OCTAL-MODE FILE…<br>chmod [OPTION]… –reference=RFILE FILE…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">* 操作对象：  </div><div class="line">&gt;u 文件属主权限  </div><div class="line">g 同组用户权限  </div><div class="line">o 其它用户权限  </div><div class="line">a 所有用户（包括以上三种）  </div><div class="line"></div><div class="line">* 权限设定：</div><div class="line">&gt;\+ 增加权限  </div><div class="line">\- 取消权限  </div><div class="line">= 指定操作对象设定权限  </div><div class="line"></div><div class="line">* 权限类别：  </div><div class="line">&gt;r 读权限  </div><div class="line">w 写权限  </div><div class="line">x 执行权限  </div><div class="line">s 文件属主和组id(见标题三)</div><div class="line">t 只有root或者文件所有者才能删除此文件（见标题三）  </div><div class="line"></div><div class="line">* 数字权限：  </div><div class="line">&gt;r--&gt;4  </div><div class="line">w--&gt;2  </div><div class="line">x--&gt;1  </div><div class="line"></div><div class="line">举例：</div><div class="line">* 所有人可读取</div></pre></td></tr></table></figure></p>
+<p>[root@localhost ~]# chmod 777 test<br>[root@localhost ~]# chmod ugo+rwx test<br>[root@localhost ~]# chmod a+rwx test<br>[root@localhost ~]# chmod u=rwx,g=rwx,o=rwx test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 收回所有用户的权限</div></pre></td></tr></table></figure></p>
+<p>[root@localhost ~]# chmod 000 test<br>[root@localhost ~]# chmod ugo-rwx test<br>[root@localhost ~]# chmod a-rwx test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 递归给目录里所有的文件或目录赋予权限</div></pre></td></tr></table></figure></p>
+<p>[root@localhost ~]# chmod -R 777 test/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 五、chattr命令和lsattr命令的详解</div><div class="line">* lsattr用来查看文件的隐藏属性</div></pre></td></tr></table></figure></p>
+<p>[root@localhost ~]# lsattr<br>————-e- ./install.log.syslog<br>————-e- ./anaconda-ks.cfg<br>————-e- ./install.log<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">e是ext3，ext4文件系统自带的</div></pre></td></tr></table></figure></p>
+<p>-R #递归地列出目录以及其下内容的属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">-V #显示程序版本</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-a #列出目录中的所有文件,包括以`.&apos;开头的文件的属性和隐藏的文件</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-d #以列出其它文件的方式那样列出目录的属性, 而不列出其下的内容</div></pre></td></tr></table></figure>
+<ul>
+<li>chattr用来修改文件的属性<br>操作符：<blockquote>
+<p>操作符`+’用来在文件已有属性的基础上增加选定的属性; `-‘用来去掉文件上的选定的属性;而<code>=&#39;用来指定该文件的唯一属性
+属性：
+&#39;A&#39;属性的文件时,它的atime记录不会改变. 这可以在笔记本电脑系统中避免某些磁盘I/O处理</code>a’属性的文件只能在添加模式下打开用于写入. 只有超级用户可以设置或清除该属性<br><code>c&#39;属性的文件在磁盘上由内核自动进行压缩处理. 从该文件读取时返回的是未压缩的数据. 对该文件的一次写入会在保存它们到磁盘之前进行数据压缩</code>d’属性的文件不能对其运行 dump(8) 程序进行备份<br><code>i&#39;属性的文件不能进行修改:你既不能删除它, 也不能给它重新命名,你不能对该文件创建链接, 而且也不能对该文件写入任何数据. 只有超级用户可以设置或清除该属性</code>s’属性的文件时,将对其数据块清零 并写回到磁盘上<br>‘S’属性的文件时, 修改会同步写入到磁盘上;这与应用到文件子系统上的’sync’挂载选项有相同的效果<br>`u’属性的文件时, 将会保存其内容. 这使得用户可以请求恢复被删除的文件</p>
+</blockquote>
+</li>
+</ul>
+
+                
+
+
+<p class="black-link-context">
+    <a href="/2017/05/24/小型企业安全建设/" rel="next" title="小型企业安全建设">
+    下一篇：小型企业安全建设
+  </a>
+</p>
+
+
+            </div>
+			
+        </div>
+    </div>
+</article>
+
+
+
+
+    <section id="comment">
+        <div class="card">
+            <div class="card-content">
+                <!-- Duoshuo Comment BEGIN -->
+                <div class="ds-thread" data-thread-key="2017/05/25/Linux文件和目录的权限、ACL控制/" data-title="Linux文件和目录的权限、ACL控制" data-url="http://www.nice-jj.com/2017/05/25/Linux文件和目录的权限、ACL控制/"></div>
+
+                <script type="text/javascript">
+                    console.log(document.querySelector('.ds-thread'));
+                    var duoshuoQuery = {
+                        short_name: 'nice-jj'
+                    };
+                    (function() {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:'
+                            ? 'https:'
+                            : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- Duoshuo Comment END -->
+            </div>
+        </div>
+    </section>
+
 
 
 </div>
