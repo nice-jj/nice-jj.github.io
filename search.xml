@@ -9,16 +9,67 @@
       <content type="html"><![CDATA[<blockquote>
 <p>Linux中的权限分为3种，分别是读（read）、写（write）和执行（execute），在系统中分别记作：r、w和x，或者用数字表示为4、2和1  </p>
 </blockquote>
-<h1 id="一、查看文件权限"><a href="#一、查看文件权限" class="headerlink" title="一、查看文件权限"></a>一、查看文件权限</h1><p>可以使用ls -al来查看文件的详细信息，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# ls -al /etc/passwd</div><div class="line">-rw-r--r--. 1 root root 904 2月  10 10:04 /etc/passwd</div><div class="line">```  </div><div class="line">第1个字符用来区分是目录还是文件，具体解释：  </div><div class="line">d：表示一个目录  </div><div class="line">-：表示一个文件  </div><div class="line">l：表示一个软连接  </div><div class="line">b、c：分别表示区块设备和其他的外围设备，是特殊类型的文件</div><div class="line">s、p：表示系统的数据结构和管道，通常很少见到  </div><div class="line">第2~10个字符表示该文件的权限，每三个为一组，前三个表示文件所有者权限，中间三个表示文件所有者所在组的其他用户权限，最后三个表示其他用户权限：  </div><div class="line">r：读的权限，也可以用数字4表示</div><div class="line">w：写的权限，也可以用数字2表示</div><div class="line">x：执行的权限，也可以用数字1表示</div><div class="line">以上/etc/passwd文件的权限为-rw-r--r--，表示文件所有者具有读、写权限，文件所有者所在组的其他用户具有读的权限，其他用户具有读的权限。  </div><div class="line"></div><div class="line"># 二、新建文件或目录的默认权限</div><div class="line">* 每个用户的home目录的权限默认为:</div></pre></td></tr></table></figure></p>
-<p>[test@localhost home]$ ll<br>总用量 4<br>drwx——. 4 test test 4096 2月  16 11:41 test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 除home目录以外，其他新建文件或目录的默认权限以umask的值为准，如果umask的值为077，那么新建的文件的默认权限为700。使用umask命令可查看umask的值：</div></pre></td></tr></table></figure></p>
-<p>[test@localhost ~]$ umask<br>0002<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">使用umask命令更改权限的默认值：</div></pre></td></tr></table></figure></p>
-<p>[test@localhost ~]$ umask<br>0002<br>[test@localhost ~]$ umask 777<br>[test@localhost ~]$ umask<br>0777<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 三、其他特殊权限</div><div class="line">除了r、w、x权限之外，还有其他三种特殊的权限，分别为：SUID（s、S、4）、SGID（s、S、2）、SBIT（t、T、1）  </div><div class="line">* SUID  </div><div class="line">此权限设置在文件所有者的x权限上，只对二进制文件有效，执行者拥有文件所有者的权限。如果为小写的s，表示在设置s权限前，该文件所有者有x权限；如果为大写的S，表示在设置S权限前，该文件所有者没有x权限。  </div><div class="line">* SGID</div><div class="line">此权限设置在文件所属组的x权限上，执行者拥有文件所属组的权限。如果为小写的s，表示在设置s权限前，该文件所属组有x权限；如果为大写的S，表示在设置S权限前，该文件所属组没有x权限。</div><div class="line">* SBIT</div><div class="line">此权限设置在文件其他用户的x权限上，当设置了t权限后，只有root或者文件所有者才能删除此文件。如果为小写的t，表示在设置t权限前，其他用户有x权限；如果为大写的T，表示在设置T权限前，其他用户没有x权限。  </div><div class="line"></div><div class="line"># 四、chmod命令详解</div><div class="line">此命令用来改变文件或目录的权限  </div><div class="line">* 用法：</div></pre></td></tr></table></figure></p>
-<p>chmod [OPTION]… MODE[,MODE]… FILE…<br>chmod [OPTION]… OCTAL-MODE FILE…<br>chmod [OPTION]… –reference=RFILE FILE…<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">* 操作对象：  </div><div class="line">&gt;u 文件属主权限  </div><div class="line">g 同组用户权限  </div><div class="line">o 其它用户权限  </div><div class="line">a 所有用户（包括以上三种）  </div><div class="line"></div><div class="line">* 权限设定：</div><div class="line">&gt;\+ 增加权限  </div><div class="line">\- 取消权限  </div><div class="line">= 指定操作对象设定权限  </div><div class="line"></div><div class="line">* 权限类别：  </div><div class="line">&gt;r 读权限  </div><div class="line">w 写权限  </div><div class="line">x 执行权限  </div><div class="line">s 文件属主和组id(见标题三)</div><div class="line">t 只有root或者文件所有者才能删除此文件（见标题三）  </div><div class="line"></div><div class="line">* 数字权限：  </div><div class="line">&gt;r--&gt;4  </div><div class="line">w--&gt;2  </div><div class="line">x--&gt;1  </div><div class="line"></div><div class="line">举例：</div><div class="line">* 所有人可读取</div></pre></td></tr></table></figure></p>
-<p>[root@localhost ~]# chmod 777 test<br>[root@localhost ~]# chmod ugo+rwx test<br>[root@localhost ~]# chmod a+rwx test<br>[root@localhost ~]# chmod u=rwx,g=rwx,o=rwx test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 收回所有用户的权限</div></pre></td></tr></table></figure></p>
-<p>[root@localhost ~]# chmod 000 test<br>[root@localhost ~]# chmod ugo-rwx test<br>[root@localhost ~]# chmod a-rwx test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 递归给目录里所有的文件或目录赋予权限</div></pre></td></tr></table></figure></p>
-<p>[root@localhost ~]# chmod -R 777 test/<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 五、chattr命令和lsattr命令的详解</div><div class="line">* lsattr用来查看文件的隐藏属性</div></pre></td></tr></table></figure></p>
-<p>[root@localhost ~]# lsattr<br>————-e- ./install.log.syslog<br>————-e- ./anaconda-ks.cfg<br>————-e- ./install.log<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">e是ext3，ext4文件系统自带的</div></pre></td></tr></table></figure></p>
-<p>-R #递归地列出目录以及其下内容的属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">-V #显示程序版本</div></pre></td></tr></table></figure></p>
+<h1 id="一、查看文件权限"><a href="#一、查看文件权限" class="headerlink" title="一、查看文件权限"></a>一、查看文件权限</h1><p>可以使用ls -al来查看文件的详细信息，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# ls -al /etc/passwd</div><div class="line">-rw-r--r--. 1 root root 904 2月  10 10:04 /etc/passwd</div></pre></td></tr></table></figure></p>
+<p>第1个字符用来区分是目录还是文件，具体解释：<br>d：表示一个目录<br>-：表示一个文件<br>l：表示一个软连接<br>b、c：分别表示区块设备和其他的外围设备，是特殊类型的文件<br>s、p：表示系统的数据结构和管道，通常很少见到<br>第2~10个字符表示该文件的权限，每三个为一组，前三个表示文件所有者权限，中间三个表示文件所有者所在组的其他用户权限，最后三个表示其他用户权限：<br>r：读的权限，也可以用数字4表示<br>w：写的权限，也可以用数字2表示<br>x：执行的权限，也可以用数字1表示<br>以上/etc/passwd文件的权限为-rw-r–r–，表示文件所有者具有读、写权限，文件所有者所在组的其他用户具有读的权限，其他用户具有读的权限。  </p>
+<h1 id="二、新建文件或目录的默认权限"><a href="#二、新建文件或目录的默认权限" class="headerlink" title="二、新建文件或目录的默认权限"></a>二、新建文件或目录的默认权限</h1><ul>
+<li><p>每个用户的home目录的权限默认为:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[test@localhost home]$ ll</div><div class="line">总用量 4</div><div class="line">drwx------. 4 test test 4096 2月  16 11:41 test</div></pre></td></tr></table></figure>
+</li>
+<li><p>除home目录以外，其他新建文件或目录的默认权限以umask的值为准，如果umask的值为077，那么新建的文件的默认权限为700。使用umask命令可查看umask的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[test@localhost ~]$ umask</div><div class="line">0002</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用umask命令更改权限的默认值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[test@localhost ~]$ umask</div><div class="line">0002</div><div class="line">[test@localhost ~]$ umask 777</div><div class="line">[test@localhost ~]$ umask</div><div class="line">0777</div></pre></td></tr></table></figure></p>
+<h1 id="三、其他特殊权限"><a href="#三、其他特殊权限" class="headerlink" title="三、其他特殊权限"></a>三、其他特殊权限</h1><p>除了r、w、x权限之外，还有其他三种特殊的权限，分别为：SUID（s、S、4）、SGID（s、S、2）、SBIT（t、T、1）  </p>
+<ul>
+<li>SUID<br>此权限设置在文件所有者的x权限上，只对二进制文件有效，执行者拥有文件所有者的权限。如果为小写的s，表示在设置s权限前，该文件所有者有x权限；如果为大写的S，表示在设置S权限前，该文件所有者没有x权限。  </li>
+<li>SGID<br>此权限设置在文件所属组的x权限上，执行者拥有文件所属组的权限。如果为小写的s，表示在设置s权限前，该文件所属组有x权限；如果为大写的S，表示在设置S权限前，该文件所属组没有x权限。</li>
+<li>SBIT<br>此权限设置在文件其他用户的x权限上，当设置了t权限后，只有root或者文件所有者才能删除此文件。如果为小写的t，表示在设置t权限前，其他用户有x权限；如果为大写的T，表示在设置T权限前，其他用户没有x权限。</li>
+</ul>
+<h1 id="四、chmod命令详解"><a href="#四、chmod命令详解" class="headerlink" title="四、chmod命令详解"></a>四、chmod命令详解</h1><p>此命令用来改变文件或目录的权限  </p>
+<ul>
+<li><p>用法：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod [OPTION]... MODE[,MODE]... FILE...</div><div class="line">chmod [OPTION]... OCTAL-MODE FILE...</div><div class="line">chmod [OPTION]... --reference=RFILE FILE...</div></pre></td></tr></table></figure>
+</li>
+<li><p>操作对象：  </p>
+<blockquote>
+<p>u 文件属主权限<br>g 同组用户权限<br>o 其它用户权限<br>a 所有用户（包括以上三种）</p>
+</blockquote>
+</li>
+<li><p>权限设定：</p>
+<blockquote>
+<p>+ 增加权限<br>- 取消权限<br>= 指定操作对象设定权限</p>
+</blockquote>
+</li>
+<li><p>权限类别：  </p>
+<blockquote>
+<p>r 读权限<br>w 写权限<br>x 执行权限<br>s 文件属主和组id(见标题三)<br>t 只有root或者文件所有者才能删除此文件（见标题三）</p>
+</blockquote>
+</li>
+<li><p>数字权限：  </p>
+<blockquote>
+<p>r–&gt;4<br>w–&gt;2<br>x–&gt;1</p>
+</blockquote>
+</li>
+</ul>
+<p>举例：</p>
+<ul>
+<li><p>所有人可读取  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# chmod 777 test</div><div class="line">[root@localhost ~]# chmod ugo+rwx test</div><div class="line">[root@localhost ~]# chmod a+rwx test</div><div class="line">[root@localhost ~]# chmod u=rwx,g=rwx,o=rwx test</div></pre></td></tr></table></figure>
+</li>
+<li><p>收回所有用户的权限  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# chmod 000 test</div><div class="line">[root@localhost ~]# chmod ugo-rwx test</div><div class="line">[root@localhost ~]# chmod a-rwx test</div></pre></td></tr></table></figure>
+</li>
+<li><p>递归给目录里所有的文件或目录赋予权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# chmod -R 777 test/</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="五、chattr命令和lsattr命令的详解"><a href="#五、chattr命令和lsattr命令的详解" class="headerlink" title="五、chattr命令和lsattr命令的详解"></a>五、chattr命令和lsattr命令的详解</h1><ul>
+<li>lsattr用来查看文件的隐藏属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# lsattr</div><div class="line">-------------e- ./install.log.syslog</div><div class="line">-------------e- ./anaconda-ks.cfg</div><div class="line">-------------e- ./install.log</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>e是ext3，ext4文件系统自带的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-R #递归地列出目录以及其下内容的属性</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-V #显示程序版本</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-a #列出目录中的所有文件,包括以`.&apos;开头的文件的属性和隐藏的文件</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-d #以列出其它文件的方式那样列出目录的属性, 而不列出其下的内容</div></pre></td></tr></table></figure>
 <ul>
@@ -42,9 +93,9 @@
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 安全 </tag>
             
@@ -576,9 +627,9 @@
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
         
@@ -634,9 +685,9 @@
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
         
@@ -747,9 +798,9 @@
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
         
